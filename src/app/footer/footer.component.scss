@@ -1,0 +1,23 @@
+@use "../../styles" as *;
+
+* {
+  font-family: "DM Sans", sans-serif;
+}
+
+.footer-legal-links {
+    @include flex-center;
+    position: absolute;
+    bottom: 48px;
+    left: 50%;
+    transform: translateX(-50%);
+    gap: 48px;
+    p {
+      margin: 0;
+      font-size: 18px;
+      a {
+        color: white;
+        text-decoration: none;
+        cursor: pointer;
+      }
+    }
+  }
