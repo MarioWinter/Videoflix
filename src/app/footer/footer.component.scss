@@ -21,3 +21,19 @@
       }
     }
   }
+
+  @media (max-width: 769px) {
+    .footer-legal-links {
+      p {
+        font-size: 16px;
+      }
+    }
+  }
+
+  @media (max-width: 350px) {
+    .footer-legal-links {
+      p {
+        font-size: 14px;
+      }
+    }
+  }
