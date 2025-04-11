@@ -4,6 +4,19 @@
   font-family: "DM Sans", sans-serif;
 }
 
+::ng-deep [header-button] {
+  width: 100px;
+  padding: 12px 24px;
+  border-radius: 40px;
+  border: none;
+  background-color: #2e3edf;
+  color: white;
+  &:hover {
+    cursor: pointer;
+    background-color: #424fdf;
+  }
+}
+
 section {
   @include flex-center;
   min-width: 100%;
@@ -19,18 +32,6 @@ section {
     max-width: 1440px;
     padding: 48px 96px;
     background-color: transparent;
-    button {
-      width: 100px;
-      padding: 12px 24px;
-      border-radius: 40px;
-      border: none;
-      background-color: #2e3edf;
-      color: white;
-      &:hover {
-        cursor: pointer;
-        background-color: #424fdf;
-      }
-    }
   }
 }
 
