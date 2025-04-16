@@ -29,3 +29,18 @@ body {
   font-weight: 700;
   src: url("/assets/fonts/dm-sans-v15-latin-700.woff2") format("woff2");
 }
+
+button {
+  @include flex-center;
+  width: 140px;
+  padding: 12px 24px;
+  border-radius: 40px;
+  border: none;
+  background-color: #2e3edf;
+  color: white;
+  gap: 7px;
+  cursor: pointer;
+  &:hover {
+    background-color: #424fdf;
+  }
+}
