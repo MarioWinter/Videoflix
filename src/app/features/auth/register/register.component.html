@@ -1,0 +1,19 @@
+<div class="atf-img">
+	<div>
+		<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+			<label>
+				E-Mail
+				<input type="email" formControlName="email" />
+			</label>
+			<label>
+				Passwort
+				<input type="password" formControlName="password1" />
+			</label>
+			<label>
+				Passwort
+				<input type="password" formControlName="password2" />
+			</label>
+			<button type="submit" [disabled]="registerForm.invalid">Registrieren</button>
+		</form>
+	</div>
+</div>
