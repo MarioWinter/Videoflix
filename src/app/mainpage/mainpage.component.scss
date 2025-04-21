@@ -7,18 +7,49 @@
 section {
   @include flex-center;
   background-color: #141414;
-  width: 100%;
-}
-
-.mainpage-top-content {
-  @include flex-center;
-  position: fixed;
-  video {
-    position: fixed;
-    max-width: 1440px;
+  .content-wrapper {
+    position: relative;
+    max-width: 1650px;
     width: 100%;
-    top: 0;
-    object-fit: cover;
+    .mainpage-top-content {
+      @include flex-center;
+      .video-info-container {
+        position: absolute;
+        width: 100%;
+        z-index: 1;
+        display: flex;
+        justify-content: flex-start;
+      }
+      .video-info {
+        padding: 0 96px;
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        color: white;
+        gap: 32px;
+        max-width: 1440px;
+        h1 {
+          max-width: 440px;
+          font-size: 80px;
+          margin: 0;
+        }
+        p {
+          max-width: 440px;
+          font-size: 16px;
+          font-weight: 400;
+          margin: 0;
+        }
+        button {
+          max-width: 115px;
+        }
+      }
+      video {
+        max-height: 800px;
+        width: 100%;
+        top: 0;
+        object-fit: cover;
+      }
+    }
   }
 }
 
@@ -30,49 +61,14 @@ section {
   display: block !important;
 }
 
-.video-info-container {
-  position: fixed;
-  max-width: 1440px;
-  width: 100%;
-  top: 20%;
-  padding-left: 96px;
-  z-index: 1;
-}
-
-.video-info {
-  display: flex;
-  flex-direction: column;
-  top: 16%;
-  left: 96px;
-  text-align: left;
-  color: white;
-  gap: 32px;
-  h1 {
-    max-width: 440px;
-    font-size: 80px;
-    margin: 0;
-  }
-  p {
-    max-width: 440px;
-    font-size: 16px;
-    font-weight: 400;
-    margin: 0;
-  }
-  button {
-    max-width: 115px;
-  }
-}
-
 .mainpage-bottom-content {
   display: flex;
   flex-direction: column;
   position: relative;
-  max-width: 1440px;
-  width: 100%;
+  min-width: 1440px;
   gap: 48px;
   bottom: 48px;
   padding: 0 96px;
-  margin-top: 65vh;
   .video-frame-lines {
     display: flex;
     flex-direction: column;
@@ -84,8 +80,9 @@ section {
       margin: 0;
     }
     .frames {
+      overflow-x: scroll; // das funktioniert noch nicht
       display: flex;
-      gap: 16px; 
+      gap: 16px;
       img {
         width: 213px;
         height: 120px;
