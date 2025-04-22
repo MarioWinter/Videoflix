@@ -3,7 +3,7 @@ import { RegisterComponent } from "./features/auth/register/register.component";
 
 export const routes: Routes = [
 	{
-		path: "register",
+		path: "",
 		component: RegisterComponent,
 	},
 ];

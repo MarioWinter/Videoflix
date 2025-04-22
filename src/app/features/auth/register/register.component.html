@@ -1,19 +1,24 @@
-<div class="atf-img">
-	<div>
+<div class="atf-img register-wrapper">
+	<div class="register-card">
+		<h2>Sign up</h2>
 		<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 			<label>
-				E-Mail
-				<input type="email" formControlName="email" />
+				<input type="email" formControlName="email" placeholder="Email Address" />
 			</label>
+
 			<label>
-				Passwort
-				<input type="password" formControlName="password1" />
+				<input type="password" formControlName="password1" placeholder="Enter a password" />
 			</label>
+
 			<label>
-				Passwort
-				<input type="password" formControlName="password2" />
+				<input type="password" formControlName="password2" placeholder="Confirm Password" />
 			</label>
-			<button type="submit" [disabled]="registerForm.invalid">Registrieren</button>
+
+			@if (passwordsDoNotMatch()) {
+			<p class="error">⚠ Passwords must match.</p>
+			}
+
+			<button type="submit" [disabled]="registerForm.invalid || passwordsDoNotMatch()">Registrieren</button>
 		</form>
 	</div>
 </div>
