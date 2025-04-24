@@ -1,0 +1,7 @@
+<label class="input-wrapper">
+	<!-- Label anzeigen, falls gesetzt -->
+	<span *ngIf="label">{{ label }}</span>
+	<input [type]="type" [placeholder]="placeholder" [value]="value" (input)="onInput('$event.target.value')" (blur)="onTouched()" />
+	<!-- Fehler nur anzeigen, wenn gesetzt -->
+	<p class="error" *ngIf="error">{{ error }}</p>
+</label>
