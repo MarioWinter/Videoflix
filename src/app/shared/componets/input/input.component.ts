@@ -30,11 +30,11 @@ export class InputComponent implements ControlValueAccessor {
 	@Input() placeholder: string = "";
 	/** Optional label above the input */
 	@Input() label?: string;
+	/** Validation error message, passed from parent */
+	@Input() error?: string; // geändert: als @Input() deklariert
 
 	/** Current value of the input */
 	value: string = "";
-	/** Validation error message, if any */
-	error?: string;
 
 	// Functions provided by Angular to propagate changes/touches:
 	private onChange: (value: string) => void = () => {};

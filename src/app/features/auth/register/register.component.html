@@ -2,23 +2,17 @@
 	<div class="register-card">
 		<h2>Sign up</h2>
 		<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-			<label>
-				<input type="email" formControlName="email" placeholder="Email Address" />
-			</label>
+			<app-input formControlName="email" label="E-Mail" type="email" placeholder="Email Address"> </app-input>
 
-			<label>
-				<input type="password" formControlName="password1" placeholder="Enter a password" />
-			</label>
+			<app-input formControlName="password1" label="Passwort" type="password" placeholder="Enter a password"> </app-input>
 
-			<label>
-				<input type="password" formControlName="password2" placeholder="Confirm Password" />
-			</label>
+			<app-input formControlName="password2" label="Passwort bestätigen" type="password" placeholder="Confirm Password"> </app-input>
 
 			@if (passwordsDoNotMatch()) {
 			<p class="error">⚠ Passwords must match.</p>
 			}
 
-			<button type="submit" [disabled]="registerForm.invalid || passwordsDoNotMatch()">Registrieren</button>
+			<app-button type="submit" [disabled]="registerForm.invalid || passwordsDoNotMatch()"> Registrieren </app-button>
 		</form>
 	</div>
 </div>
