@@ -1,12 +1,8 @@
 <label class="input-wrapper">
 	@if (label) {
-	<!-- Label nur anzeigen, wenn @Input() label gesetzt ist -->
 	<span>{{ label }}</span>
+	<!-- Label nur anzeigen, wenn gesetzt -->
 	}
 
 	<input [type]="type" [placeholder]="placeholder" [value]="value" #inputRef (input)="onInput(inputRef.value)" (blur)="onTouched()" />
-
-	@if (error) {
-	<p class="error">{{ error }}</p>
-	}
 </label>

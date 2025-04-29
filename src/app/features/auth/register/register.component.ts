@@ -1,8 +1,9 @@
 import { Component, ChangeDetectionStrategy, computed, signal, Signal } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { ReactiveFormsModule, FormGroup, FormControl, Validators } from "@angular/forms";
-import { InputComponent } from "../../../shared/componets/input/input.component";
-import { ButtonComponent } from "../../../shared/componets/button/button.component";
+import { ReactiveFormsModule, FormGroup, FormControl, Validators, AbstractControl, ValidationErrors, ValidatorFn, FormControlName } from "@angular/forms";
+import { InputComponent } from "../../../shared/components/input/input.component";
+import { ButtonComponent } from "../../../shared/components/button/button.component";
+import { passwordMatchValidator } from "../../../shared/utils/custom.validator";
 
 /**
  * Registration component for new users.
@@ -12,29 +13,85 @@ import { ButtonComponent } from "../../../shared/componets/button/button.compone
  */
 @Component({
 	selector: "app-register",
+	standalone: true,
 	imports: [CommonModule, ReactiveFormsModule, InputComponent, ButtonComponent],
 	templateUrl: "./register.component.html",
 	styleUrls: ["./register.component.scss"],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RegisterComponent {
-	/** Reactive form group for registration */
-	registerForm = new FormGroup({
-		email: new FormControl("", [Validators.required, Validators.email]),
-		password1: new FormControl("", [Validators.required, Validators.minLength(8)]),
-		password2: new FormControl("", [Validators.required, Validators.minLength(8)]),
-	});
+	/**
+	 * Main FormGroup for the registration form.
+	 * @remarks
+	 * Contains fields for email, password1, password2 and applies blur-update strategy.
+	 */
+	registerForm = new FormGroup(
+		{
+			email: new FormControl("", {
+				validators: [Validators.required, Validators.email],
+				updateOn: "blur",
+			}),
+			password1: new FormControl("", {
+				validators: [Validators.required, Validators.minLength(8)],
+				updateOn: "blur",
+			}),
+			password2: new FormControl("", {
+				validators: [Validators.required, Validators.minLength(8)],
+				updateOn: "blur",
+			}),
+		},
+		{
+			validators: passwordMatchValidator,
+			updateOn: "blur",
+		}
+	);
 
-	/** Signal: true if passwords differ */
-	readonly passwordsDoNotMatch: Signal<boolean> = computed(() => {
-		const pw1 = this.registerForm.get("password1")?.value;
-		const pw2 = this.registerForm.get("password2")?.value;
-		return !!pw1 && !!pw2 && pw1 !== pw2;
-	});
+	/**
+	 * Indicates whether the two password fields do not match.
+	 * @returns True if password2 has been touched, has a value, and does not match password1.
+	 */
+	get showPasswordMismatch(): boolean {
+		const control = this.registerForm.get("password2");
+		return !!(control && control.value && control.touched && this.registerForm.hasError("passwordMismatch"));
+	}
 
-	/** Handle form submission */
+	/**
+	 * Checks if a given control is invalid after user interaction.
+	 * @param controlName Name of the FormControl in the FormGroup.
+	 * @returns True if the control is invalid and has been touched.
+	 */
+	showError(controlName: string): boolean {
+		const control = this.registerForm.get(controlName);
+		return !!(control && control.invalid && control.touched);
+	}
+
+	/**
+	 * Produces the appropriate error message for a specific control.
+	 * @param controlName Name of the FormControl in the FormGroup.
+	 * @returns A user-friendly validation message or null if no errors.
+	 */
+	errorMessage(controlName: string): string | null {
+		const control = this.registerForm.get(controlName);
+		if (!control || !control.errors) return null;
+		const errs = control.errors;
+
+		if (errs["email"]) {
+			return "Invalid email";
+		}
+		if (errs["minlength"]) {
+			const len = errs["minlength"].requiredLength;
+			return `Password must be at least ${len} characters long`;
+		}
+		return null;
+	}
+
+	/**
+	 * Handles form submission when all validations pass.
+	 * @remarks
+	 * Logs the form value to the console; replace with real registration logic.
+	 */
 	onSubmit(): void {
-		if (this.registerForm.valid && !this.passwordsDoNotMatch()) {
+		if (this.registerForm.valid) {
 			console.log("Benutzer registriert:", this.registerForm.value);
 		}
 	}
