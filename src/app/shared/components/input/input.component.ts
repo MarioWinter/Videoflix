@@ -25,7 +25,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR, NgControl } from "@angular/for
 export class InputComponent implements ControlValueAccessor, OnInit {
 	@Input() type: string = "text";
 	@Input() placeholder: string = "";
-	@Input() label?: string;
+	@Input() isVisible: boolean = false;
 
 	/** Internal value of the component */
 	value: string = "";
@@ -83,5 +83,13 @@ export class InputComponent implements ControlValueAccessor, OnInit {
 	onInput(value: string): void {
 		this.value = value;
 		this.onChange(value);
+	}
+
+	/**
+	 * Toggles the input `type` between "password" and "text".
+	 * Called when the visibility icon is clicked.
+	 */
+	toggleVisibility(): void {
+		this.type = this.type === "password" ? "text" : "password"; // :contentReference[oaicite:2]{index=2}
 	}
 }

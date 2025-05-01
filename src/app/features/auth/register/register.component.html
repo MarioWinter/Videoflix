@@ -9,20 +9,20 @@
 				} @else { }
 			</div>
 
-			<app-input formControlName="password1" type="password" placeholder="Enter a password"> </app-input>
+			<app-input formControlName="password1" type="password" placeholder="Enter a password" [isVisible]="true"> </app-input>
 			<div class="error">
 				@if (showError('password1')) {
 				{{ errorMessage("password1") }}
 				} @else { }
 			</div>
 
-			<app-input formControlName="password2" type="password" placeholder="Confirm Password"> </app-input>
+			<app-input formControlName="password2" type="password" placeholder="Confirm Password" [isVisible]="true"> </app-input>
 			<div class="error">
 				@if (showError('password2')) {
 				{{ errorMessage("password2") }}
 				} @else if (showPasswordMismatch) { ⚠ Passwords must match } @else { }
 			</div>
-			<app-button type="submit" [disabled]="registerForm.invalid">Registrieren</app-button>
+			<app-button type="submit" [disabled]="registerForm.invalid">Get Started</app-button>
 		</form>
 	</div>
 </div>

@@ -1,8 +1,6 @@
-<label class="input-wrapper">
-	@if (label) {
-	<span>{{ label }}</span>
-	<!-- Label nur anzeigen, wenn gesetzt -->
+<div class="input-wrapper">
+	<input class="input" [type]="type" [placeholder]="placeholder" [value]="value" #inputRef (input)="onInput(inputRef.value)" (blur)="onTouched()" />
+	@if(isVisible) {
+	<img class="pw-visibility-icon" src="/assets/icons/visibility.svg" alt="Password visibility icon" (click)="toggleVisibility()" />
 	}
-
-	<input [type]="type" [placeholder]="placeholder" [value]="value" #inputRef (input)="onInput(inputRef.value)" (blur)="onTouched()" />
-</label>
+</div>
