@@ -26,9 +26,12 @@ export class InputComponent implements ControlValueAccessor, OnInit {
 	@Input() type: string = "text";
 	@Input() placeholder: string = "";
 	@Input() isVisible: boolean = false;
+	@Input() src: string = "/assets/icons/visibility.svg";
 
-	/** Internal value of the component */
+	visibleIcon: string = "/assets/icons/visibility.svg";
+	visibleIconOff: string = "/assets/icons/visibility_off.svg";
 	value: string = "";
+
 	/** Underlying NgControl, fetched lazily to avoid DI cycle */
 	private ngControl?: NgControl;
 
@@ -37,8 +40,15 @@ export class InputComponent implements ControlValueAccessor, OnInit {
 	/** Function called when the input is touched */
 	onTouched: () => void = () => {};
 
+	/**
+	 * @param injector Angular injector used to lazily retrieve NgControl.
+	 */
 	constructor(private injector: Injector) {}
 
+	/**
+	 * Lifecycle hook: registers this component as the ControlValueAccessor
+	 * and saves the NgControl reference to read validation state.
+	 */
 	ngOnInit(): void {
 		const control = this.injector.get(NgControl, null);
 		if (control) {
@@ -86,10 +96,13 @@ export class InputComponent implements ControlValueAccessor, OnInit {
 	}
 
 	/**
-	 * Toggles the input `type` between "password" and "text".
-	 * Called when the visibility icon is clicked.
+	 * Toggles the password visibility and updates the icon accordingly.
+	 *
+	 * This method switches the input’s `type` between `"password"` and `"text"`,
+	 * and swaps the `src` property between the visible and hidden icon assets.
 	 */
-	toggleVisibility(): void {
-		this.type = this.type === "password" ? "text" : "password"; // :contentReference[oaicite:2]{index=2}
+	toggleVisibilityPw(): void {
+		this.src = this.type === "password" ? this.visibleIconOff : this.visibleIcon;
+		this.type = this.type === "password" ? "text" : "password";
 	}
 }
