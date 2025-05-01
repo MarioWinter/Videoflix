@@ -1,6 +1,6 @@
 <div class="input-wrapper">
 	<input class="input" [type]="type" [placeholder]="placeholder" [value]="value" #inputRef (input)="onInput(inputRef.value)" (blur)="onTouched()" />
 	@if(isVisible) {
-	<img class="pw-visibility-icon" [src]="src" alt="Password visibility icon" (click)="toggleVisibilityPw()" />
+	<img class="pw-visibility-icon" [src]="src" alt="Password visibility icon" (click)="toggleVisibilityPw()" [ngStyle]="fixPosImg()" />
 	}
 </div>

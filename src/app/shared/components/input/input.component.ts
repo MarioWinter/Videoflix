@@ -105,4 +105,11 @@ export class InputComponent implements ControlValueAccessor, OnInit {
 		this.src = this.type === "password" ? this.visibleIconOff : this.visibleIcon;
 		this.type = this.type === "password" ? "text" : "password";
 	}
+
+	/**
+	 * Computes dynamic padding-top based on the current input type.
+	 */
+	fixPosImg(): object {
+		return { "padding-top": this.type === "password" ? "0rem" : "0.3rem" };
+	}
 }
