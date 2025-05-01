@@ -10,6 +10,8 @@ import { FooterComponent } from '../footer/footer.component';
 })
 export class MainpageComponent {
 
+  isMainPage = true;
+
   handleLogOut() {
     console.log('Logging out...');
   }

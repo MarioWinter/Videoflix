@@ -5,7 +5,8 @@
 }
 
 section {
-  @include flex-center;
+  display: flex;
+  justify-content: center;
   background-color: #141414;
   .content-wrapper {
     position: relative;
@@ -65,7 +66,9 @@ section {
   display: flex;
   flex-direction: column;
   position: relative;
-  min-width: 1440px;
+  width: 100%;
+  max-width: 1650px;
+  box-sizing: border-box;
   gap: 48px;
   bottom: 48px;
   padding: 0 96px;
@@ -80,9 +83,16 @@ section {
       margin: 0;
     }
     .frames {
-      overflow-x: scroll; // das funktioniert noch nicht
+      overflow-x: auto;
+      overflow-y: hidden;
       display: flex;
       gap: 16px;
+      white-space: nowrap;
+      scrollbar-width: none; // Firefox
+      -ms-overflow-style: none; // IE 10+
+      &::-webkit-scrollbar {
+        display: none; // Chrome, Safari
+      }
       img {
         width: 213px;
         height: 120px;
@@ -93,4 +103,13 @@ section {
       }
     }
   }
+}
+
+.footer-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  max-width: 1650px;
+  width: 100%;
+  padding: 48px 96px;
+  gap: 48px;
 }
