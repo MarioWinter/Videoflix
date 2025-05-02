@@ -26,10 +26,12 @@ export class InputComponent implements ControlValueAccessor, OnInit {
 	@Input() type: string = "text";
 	@Input() placeholder: string = "";
 	@Input() isVisible: boolean = false;
-	@Input() src: string = "/assets/icons/visibility.svg";
+	@Input() srcRight: string = "/assets/icons/visibility.svg";
 
 	visibleIcon: string = "/assets/icons/visibility.svg";
 	visibleIconOff: string = "/assets/icons/visibility_off.svg";
+	emailIcon: string = "/assets/icons/mail-icon.svg";
+	pwIcon: string = "/assets/icons/password.svg";
 	value: string = "";
 
 	/** Underlying NgControl, fetched lazily to avoid DI cycle */
@@ -102,7 +104,7 @@ export class InputComponent implements ControlValueAccessor, OnInit {
 	 * and swaps the `src` property between the visible and hidden icon assets.
 	 */
 	toggleVisibilityPw(): void {
-		this.src = this.type === "password" ? this.visibleIconOff : this.visibleIcon;
+		this.srcRight = this.type === "password" ? this.visibleIconOff : this.visibleIcon;
 		this.type = this.type === "password" ? "text" : "password";
 	}
 
@@ -111,5 +113,12 @@ export class InputComponent implements ControlValueAccessor, OnInit {
 	 */
 	fixPosImg(): object {
 		return { "padding-top": this.type === "password" ? "0rem" : "0.3rem" };
+	}
+
+	/**
+	 * Selects the appropriate placeholder icon based on the current input type.
+	 */
+	togglePlaceholderIcon(): string {
+		return this.type === "email" ? this.emailIcon : this.pwIcon;
 	}
 }
