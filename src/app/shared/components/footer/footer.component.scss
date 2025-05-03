@@ -1,0 +1,51 @@
+@use "../../../../styles.scss" as *;
+
+* {
+	font-family: "DM Sans", sans-serif;
+}
+
+.footer-legal-links {
+	@include flex-center;
+	position: absolute;
+	bottom: 48px;
+	left: 50%;
+	transform: translateX(-50%);
+	gap: 48px;
+}
+
+:host(.mainpage-footer) section {
+	@include flex-center;
+}
+
+:host(.mainpage-footer) .footer-legal-links {
+	justify-content: flex-end;
+	padding: 0 96px 16px 96px;
+	transform: none;
+	right: 0;
+	@media (max-width: 769px) {
+		padding: 0 32px 16px 32px;
+	}
+}
+
+::ng-deep .footer-legal-links a {
+	color: white;
+	text-decoration: none;
+	cursor: pointer;
+	font-size: 18px;
+	&:hover {
+		color: #2e3edf;
+		transition: color 0.5s ease, transform 0.5s ease;
+	}
+}
+
+@media (max-width: 769px) {
+	::ng-deep .footer-legal-links a {
+		font-size: 16px;
+	}
+}
+
+@media (max-width: 350px) {
+	::ng-deep .footer-legal-links a {
+		font-size: 14px;
+	}
+}

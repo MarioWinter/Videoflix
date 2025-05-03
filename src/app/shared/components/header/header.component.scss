@@ -1,0 +1,54 @@
+@use "../../../../styles.scss" as *;
+
+* {
+	font-family: "DM Sans", sans-serif;
+}
+
+::ng-deep [header-button] {
+	&:hover {
+		cursor: pointer;
+		background-color: #424fdf;
+	}
+}
+
+section {
+	@include flex-center;
+	min-width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	.header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+		max-width: 1440px;
+		padding: 48px 96px;
+		background-color: transparent;
+	}
+}
+
+@media (max-width: 769px) {
+	.desktop-logo {
+		display: none;
+	}
+
+	.mobile-logo {
+		display: block;
+	}
+
+	section {
+		.header {
+			padding: 16px 32px;
+		}
+	}
+}
+
+@media (max-width: 350px) {
+	section {
+		.header {
+			padding: 16px 10px;
+		}
+	}
+}
