@@ -1,0 +1,45 @@
+<app-header>
+  <button header-button (click)="handleLogin()">Log in</button>
+</app-header>
+
+
+<section class="background-wrapper">
+  <div class="background-img"></div>
+
+  <div class="overlay">
+    <div>
+      <h3>Movies, TV shows, and more</h3>
+    </div>
+    <div>
+      <p>Enter your email to create or restart your subscription</p>
+    </div>
+
+    <div class="signup-form">
+      <input id="signup_email" type="email" placeholder="Email Address" />
+      <button>Sign Up<img src="/assets/img/chevron-right.png" />
+      </button>
+    </div>
+  </div>
+
+    <div class="error-toast-desktop display-none">
+      <img class="rectangle-red" src="/assets/img/rectangle-red.png">
+      <img src="/assets/img/error-vector.svg">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+      <img src="/assets/img/vector-line.png">
+      <img class="close-small" src="/assets/img/close-small.png">
+    </div>
+ 
+    <div class="mobile-toast-background d-none">
+      <div class="error-toast-mobile">
+        <img class="rectangle-red-mobile" src="/assets/img/rectangle-red-mobile.png">
+        <img src="/assets/img/error-vector.svg">
+        <p>Sed nunc dui, tempor non scelerisque ut, aliquam sit amet metus</p>
+        <button>Close</button>
+      </div> 
+    </div> 
+</section>
+
+<app-footer>
+  <a routerLink="/datenschutz">Datenschutz</a>
+  <a routerLink="/impressum">Impressum</a>
+</app-footer>
