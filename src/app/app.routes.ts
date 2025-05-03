@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { LandingpageComponent } from './landingpage/landingpage.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
+import { RegisterComponent } from "./features/auth/register/register.component";
 
 export const routes: Routes = [
     {
@@ -10,5 +11,9 @@ export const routes: Routes = [
     {
         path: 'mainpage',
         component: MainpageComponent
-    }
+    },
+  	{
+        path: 'register',
+        component: RegisterComponent,
+	  },
 ];
