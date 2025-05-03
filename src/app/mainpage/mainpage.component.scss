@@ -12,14 +12,36 @@ section {
     position: relative;
     max-width: 1650px;
     width: 100%;
+    @media (max-width: 1024px) {
+      height: 100vh;
+    }
+    @media (max-width: 960px) {
+      height: auto;
+    }
+    @media (max-width: 769px) {
+      margin-top: 75px;
+    }
     .mainpage-top-content {
       @include flex-center;
+      @media (max-width: 960px) {
+        flex-direction: column;
+        margin-bottom: 120px;
+      }
       .video-info-container {
         position: absolute;
         width: 100%;
         z-index: 1;
         display: flex;
         justify-content: flex-start;
+        @media (max-width: 960px) {
+          display: none;
+        }
+      }
+      .mobile-video-info-container {
+        @media (max-width: 960px) {
+          display: flex;
+          width: 100%;
+        }
       }
       .video-info {
         padding: 0 96px;
@@ -37,7 +59,8 @@ section {
           font-size: 80px;
           margin: 0;
           @media (max-width: 1024px) {
-            font-size: 60px;
+            font-size: 56px;
+            margin-top: 32px;
           }
           @media (max-width: 769px) {
             font-size: 45px;
@@ -53,11 +76,36 @@ section {
           max-width: 115px;
         }
       }
-      video {
+      .video-wrapper {
+        position: relative;
         max-height: 800px;
+        overflow: hidden;
+      }
+      .video-wrapper::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
         width: 100%;
-        top: 0;
+        height: 100px;
+        background: linear-gradient(to bottom, transparent, #141414);
+      }
+      @media (max-width: 769px) {
+        .video-wrapper::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100px;
+          background: linear-gradient(to top, transparent, #141414);
+        }
+      }
+      video {
+        width: 100%;
+        height: auto;
         object-fit: cover;
+        display: block;
       }
     }
   }
@@ -83,6 +131,7 @@ section {
   padding: 0 96px;
   @media (max-width: 1024px) {
     bottom: 60px;
+    margin-bottom: 90px;
   }
   @media (max-width: 769px) {
     padding: 0 32px;

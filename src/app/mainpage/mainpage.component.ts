@@ -14,6 +14,7 @@ interface VideoSection {
   templateUrl: './mainpage.component.html',
   styleUrl: './mainpage.component.scss',
 })
+
 export class MainpageComponent {
   isMainPage = true;
 
@@ -52,10 +53,7 @@ export class MainpageComponent {
     },
     {
       title: 'Romance',
-      images: [
-        '/assets/img/frame1.9.png', 
-        '/assets/img/frame1.9.1.png'
-      ],
+      images: ['/assets/img/frame1.9.png', '/assets/img/frame1.9.1.png'],
     },
   ];
 }
