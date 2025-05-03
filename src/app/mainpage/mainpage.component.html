@@ -1,0 +1,67 @@
+<app-header>
+  <button header-button (click)="handleLogOut()">
+    <img src="/assets/img/logout-icon.png" />Log out
+  </button>
+</app-header>
+
+<section>
+  <div class="content-wrapper">
+    <div class="mainpage-top-content">
+      <!-- desktop view  -->
+      <div class="video-info-container">
+        <div class="video-info">
+          <h1>Breakout</h1>
+          <p>
+            In a high-security prison, a wrongly convicted man formulates a
+            meticulous plan to break out and prove his innocence. He must
+            navigate a web of alliances and betrayals to reclaim his freedom and
+            expose the truth.
+          </p>
+          <button><img src="/assets/img/play-icon.png" />Play</button>
+        </div>
+      </div>
+
+      <div class="video-wrapper">
+        <video autoplay muted loop playsinline>
+          <source src="assets/movies/movie-mainpage.mp4" type="video/mp4" />
+          Dein Browser unterstützt kein Video.
+        </video>
+      </div>
+
+      <!-- mobile view  -->
+      <div class="mobile-video-info-container d-none">
+        <div class="video-info">
+          <h1>Breakout</h1>
+          <p>
+            In a high-security prison, a wrongly convicted man formulates a
+            meticulous plan to break out and prove his innocence. He must
+            navigate a web of alliances and betrayals to reclaim his freedom and
+            expose the truth.
+          </p>
+          <button><img src="/assets/img/play-icon.png" />Play</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="mainpage-bottom-content">
+      @for (section of videoSections; track section.title) {
+      <div class="video-frame-lines">
+        <h3>{{ section.title }}</h3>
+        <div class="scroll-container">
+          <div class="frames">
+            @for (image of section.images; track image) {
+            <img [src]="image" />
+            }
+          </div>
+          <div class="fade-overlay-right"></div>
+        </div>
+      </div>
+      }
+    </div>
+
+    <app-footer [class.mainpage-footer]="isMainPage">
+      <a routerLink="/datenschutz">Datenschutz</a>
+      <a routerLink="/impressum">Impressum</a>
+    </app-footer>
+  </div>
+</section>
