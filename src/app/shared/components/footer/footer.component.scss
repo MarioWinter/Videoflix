@@ -7,10 +7,10 @@
 .footer-legal-links {
 	@include flex-center;
 	position: absolute;
-	bottom: 48px;
+	bottom: 4.8rem;
 	left: 50%;
 	transform: translateX(-50%);
-	gap: 48px;
+	gap: 4.8rem;
 }
 
 :host(.mainpage-footer) section {
@@ -19,7 +19,7 @@
 
 :host(.mainpage-footer) .footer-legal-links {
 	justify-content: flex-end;
-	padding: 0 96px 16px 96px;
+	padding: 0 9.6rem 1.6rem 9.6rem;
 	transform: none;
 	right: 0;
 	@media (max-width: 960px) {
@@ -27,7 +27,7 @@
 		position: unset;
 	}
 	@media (max-width: 769px) {
-		padding: 0 32px 16px 32px;
+		padding: 0 3.2rem 1.6rem 3.2rem;
 	}
 }
 
@@ -38,24 +38,24 @@
 }
 
 ::ng-deep .footer-legal-links a {
-	color: white;
+	color: var(--white);
 	text-decoration: none;
 	cursor: pointer;
-	font-size: 18px;
+	font-size: 1.8rem;
 	&:hover {
-		color: #2e3edf;
+		color: var(--pramery-purple);
 		transition: color 0.5s ease, transform 0.5s ease;
 	}
 }
 
 @media (max-width: 769px) {
 	::ng-deep .footer-legal-links a {
-		font-size: 16px;
+		font-size: 1.6rem;
 	}
 }
 
 @media (max-width: 350px) {
 	::ng-deep .footer-legal-links a {
-		font-size: 14px;
+		font-size: 1.4rem;
 	}
 }
