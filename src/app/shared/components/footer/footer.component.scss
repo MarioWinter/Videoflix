@@ -22,9 +22,19 @@
 	padding: 0 9.6rem 1.6rem 9.6rem;
 	transform: none;
 	right: 0;
+	@media (max-width: 960px) {
+		bottom: 0;
+		position: unset;
+	}
 	@media (max-width: 769px) {
 		padding: 0 3.2rem 1.6rem 3.2rem;
 	}
+}
+
+:host(.preview-footer) .footer-legal-links {
+	@media (max-width: 395px) {
+        bottom: 2.5rem;
+    }
 }
 
 ::ng-deep .footer-legal-links a {

@@ -4,6 +4,7 @@ import { MainpageComponent } from "./features/mainpage/mainpage.component";
 import { RegisterComponent } from "./features/auth/register/register.component";
 import { ImprintComponent } from "./shared/components/imprint/imprint.component";
 import { PrivacyPolicyComponent } from "./shared/components/privacy-policy/privacy-policy.component";
+import { PreviewComponent } from "./features/preview/preview.component";
 
 export const routes: Routes = [
 	{
@@ -17,6 +18,10 @@ export const routes: Routes = [
 	{
 		path: "mainpage",
 		component: MainpageComponent,
+	},
+	{
+		path: "preview",
+		component: PreviewComponent,
 	},
 	{
 		path: "imprint",
