@@ -1,8 +1,7 @@
 <section>
     <app-header>
-        <!-- hier muss arrow back rein statt button -->
-        <button header-button routerLink="">
-            <img src="/assets/icons/logout.svg" />Log out
+        <button header-button (click)="goBack()" class="imprint-back-btn">
+            <img src="/assets/icons/arrow_back.svg" />
         </button>
     </app-header>
 
@@ -42,7 +41,7 @@
     </div>
 
     <app-footer>
-        <a routerLink="/datenschutz">Datenschutz</a>
+        <a routerLink="/privacy-policy">Privacy Policy</a>
         <!-- <a routerLink="/impressum">Impressum</a> -->
     </app-footer>
 </section>
