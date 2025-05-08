@@ -1,21 +1,30 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
+import { HeaderComponent } from '../../shared/components/header/header.component';
+import { Location } from '@angular/common';
 
 @Component({
-  selector: 'app-video-player',
-  imports: [],
-  templateUrl: './video-player.component.html',
-  styleUrl: './video-player.component.scss'
+    selector: 'app-video-player',
+    imports: [HeaderComponent],
+    templateUrl: './video-player.component.html',
+    styleUrl: './video-player.component.scss',
 })
 export class VideoPlayerComponent {
-  @Input() src!: string;
-  // @Input() poster?: string; // für die Vorschaubilder 
-  isVisible = false; 
+    constructor(private location: Location) {}
 
-  showPlayer() {
-    this.isVisible = true;
-  }
+    isVideoPlayer = true;
 
-  closePlayer() {
-    this.isVisible = false;
-  }
+    goBack() {
+        this.location.back();
+    }
+
+    showHeader = true;
+    private hideTimeout: any;
+
+    showControls() {
+        this.showHeader = true;
+        clearTimeout(this.hideTimeout);
+        this.hideTimeout = setTimeout(() => {
+            this.showHeader = false;
+        }, 3000);
+    }
 }

@@ -1,9 +1,13 @@
-<div [@if]="isVisible" class="video-overlay">
-    <button (click)="closePlayer()">Schließen</button>
-    <video [src]="src" controls autoplay>
-      Dein Browser unterstützt das Video-Tag nicht.
-    </video>
-  </div>
-  
-  
-  
+<section>
+    <div class="video-overlay">
+        <app-header [class.videoplayer-header]="isVideoPlayer">
+            <button header-button (click)="goBack()" class="videoplayer-back-btn">
+                <img src="/assets/icons/arrow_back.svg" />
+            </button>
+        </app-header>
+
+        <video #videoElement controls>
+            <source src="assets/movies/movie-mainpage.mp4" type="video/mp4" />
+        </video>
+    </div>
+</section>

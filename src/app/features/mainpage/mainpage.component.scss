@@ -14,12 +14,15 @@ section {
         width: 100%;
         @media (max-width: 1024px) {
             height: 100vh;
+            justify-content: center;
+            display: flex;
+            flex-direction: column;
         }
         @media (max-width: 500px) {
             height: unset;
         }
         @media (max-width: 769px) {
-            margin-top: 7.5rem;
+            margin-top: 18.5rem;
         }
         .mainpage-top-content {
             @include flex-center;
