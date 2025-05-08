@@ -6,24 +6,9 @@ import { ImprintComponent } from "./shared/components/imprint/imprint.component"
 import { PrivacyPolicyComponent } from "./shared/components/privacy-policy/privacy-policy.component";
 
 export const routes: Routes = [
-	{
-		path: "",
-		component: LandingpageComponent,
-	},
-	{
-		path: "register",
-		component: RegisterComponent,
-	},
-	{
-		path: "mainpage",
-		component: MainpageComponent,
-	},
-	{
-		path: "imprint",
-		component: ImprintComponent,
-	},
-	{
-		path: "privacy-policy",
-		component: PrivacyPolicyComponent,
-	},
+	{ path: "", component: LandingpageComponent },
+	{ path: "register", component: RegisterComponent },
+	{ path: "mainpage", component: MainpageComponent },
+	{ path: "imprint", component: ImprintComponent },
+	{ path: "privacy-policy", component: PrivacyPolicyComponent },
 ];
