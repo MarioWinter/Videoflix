@@ -29,15 +29,15 @@ export class RegisterComponent {
 	 */
 	registerForm = new FormGroup(
 		{
-			email: new FormControl("", {
+			email: new FormControl<string>("", {
 				validators: [Validators.required, Validators.email],
 				updateOn: "blur",
 			}),
-			password1: new FormControl("", {
+			password1: new FormControl<string>("", {
 				validators: [Validators.required, Validators.minLength(8)],
 				updateOn: "blur",
 			}),
-			password2: new FormControl("", {
+			password2: new FormControl<string>("", {
 				validators: [Validators.required, Validators.minLength(8)],
 				updateOn: "blur",
 			}),

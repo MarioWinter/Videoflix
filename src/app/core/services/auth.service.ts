@@ -9,9 +9,7 @@ export interface RegisterPayload {
 }
 
 /**
- * @injectable
- * @remarks
- * Handles registration and login via DJ-Rest-Auth with JWT in HttpOnly cookies.
+ * AuthService handles registration, login, refresh and user-details retrieval.
  */
 @Injectable({ providedIn: "root" })
 export class AuthService {
@@ -44,5 +42,35 @@ export class AuthService {
 				withCredentials: true,
 			}
 		);
+	}
+
+	/**
+	 * Refreshes the access token using the HttpOnly refresh cookie.
+	 *
+	 * @remarks
+	 * This method sends a POST request to the backend endpoint responsible for issuing
+	 * a new access token. The refresh token is automatically sent via an HttpOnly cookie.
+	 *
+	 * @returns An observable containing the new access token or an error if the cookie is missing or expired.
+	 */
+	refreshToken(): Observable<any> {
+		return this.http.post(
+			`${this.baseUrl}/token/refresh/`,
+			{}, // kein Body nötig, das Cookie wird automatisch mitgesendet
+			{ withCredentials: true }
+		);
+	}
+
+	/**
+	 * Retrieves the authenticated user's details.
+	 *
+	 * @remarks
+	 * This request only succeeds if a valid access token is present in the cookies.
+	 * Used to fetch user profile or session-related data after authentication.
+	 *
+	 * @returns An observable containing the user's details, such as ID, email, etc.
+	 */
+	getUserDetails(): Observable<any> {
+		return this.http.get(`${this.baseUrl}/user/`, { withCredentials: true });
 	}
 }
