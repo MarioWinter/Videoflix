@@ -1,9 +1,11 @@
-import { Component, ChangeDetectionStrategy, computed, signal, Signal } from "@angular/core";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { ReactiveFormsModule, FormGroup, FormControl, Validators, AbstractControl, ValidationErrors, ValidatorFn, FormControlName } from "@angular/forms";
+import { ReactiveFormsModule, FormGroup, FormControl, Validators } from "@angular/forms";
 import { InputComponent } from "../../../shared/components/input/input.component";
 import { ButtonComponent } from "../../../shared/components/button/button.component";
 import { passwordMatchValidator } from "../../../shared/utils/custom.validator";
+import { AuthService, RegisterPayload } from "../../../core/services/auth.service";
+import { Router } from "@angular/router";
 
 /**
  * Registration component for new users.
@@ -45,6 +47,10 @@ export class RegisterComponent {
 			updateOn: "blur",
 		}
 	);
+
+	serverError: string | null = null;
+
+	constructor(private auth: AuthService, private router: Router) {}
 
 	/**
 	 * Indicates whether the two password fields do not match.
@@ -91,8 +97,15 @@ export class RegisterComponent {
 	 * Logs the form value to the console; replace with real registration logic.
 	 */
 	onSubmit(): void {
+		this.serverError = null;
 		if (this.registerForm.valid) {
-			console.log("Benutzer registriert:", this.registerForm.value);
+			const payload: RegisterPayload = this.registerForm.value as RegisterPayload;
+			this.auth.register(payload).subscribe({
+				next: () => this.router.navigate(["/login"]),
+				error: (err) => {
+					this.serverError = err.error?.non_field_errors?.[0] || "Registration failed";
+				},
+			});
 		}
 	}
 }
