@@ -16,7 +16,7 @@
                         innocence. He must navigate a web of alliances and
                         betrayals to reclaim his freedom and expose the truth.
                     </p>
-                    <button>
+                    <button routerLink="video-player">
                         <img src="/assets/icons/play_arrow.svg" />Play
                     </button>
                 </div>
@@ -37,7 +37,7 @@
                 <div class="scroll-container">
                     <div class="frames">
                         @for (image of section.images; track image) {
-                          <a [routerLink]="['/preview']" [queryParams]="{ img: image }">
+                          <a (click)="onImageClick(image)">
                               <img [src]="image" />
                           </a>
                         }

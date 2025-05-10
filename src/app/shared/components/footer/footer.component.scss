@@ -4,6 +4,10 @@
 	font-family: "DM Sans", sans-serif;
 }
 
+section {
+	background-color: var(--mainpage-bg);
+}
+
 .footer-legal-links {
 	@include flex-center;
 	position: absolute;
@@ -58,4 +62,12 @@
 	::ng-deep .footer-legal-links a {
 		font-size: 1.4rem;
 	}
+}
+
+:host(.preview-footer) .footer-legal-links {
+	width: 100%;
+}
+
+:host(.landingpage-footer) .footer-legal-links {
+	width: 100%;
 }

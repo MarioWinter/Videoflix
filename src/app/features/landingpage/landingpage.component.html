@@ -40,7 +40,7 @@
         <button>Close</button>
       </div> 
     </div> 
-        <div class="error-toast-mobile">
+        <div class="error-toast-mobile display-none">
             <img class="rectangle-red-mobile" src="/assets/img/rectangle-red-mobile.svg"/>
             <img src="/assets/icons/error-vector.svg" />
             <p>
@@ -50,7 +50,7 @@
         </div>
 </section>
 
-<app-footer>
+<app-footer [class.landingpage-footer]="isLandingPage">
     <a routerLink="/privacy-policy">Privacy Policy</a>
     <a routerLink="/imprint">Imprint</a>
 </app-footer>

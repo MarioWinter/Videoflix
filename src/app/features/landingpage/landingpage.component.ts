@@ -10,5 +10,5 @@ import { RouterModule } from '@angular/router';
 	styleUrl: "./landingpage.component.scss",
 })
 export class LandingpageComponent {
-	
+	isLandingPage = true;
 }

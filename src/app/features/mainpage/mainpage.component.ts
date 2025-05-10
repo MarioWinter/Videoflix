@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../../shared/components/header/header.component';
 import { FooterComponent } from '../../shared/components/footer/footer.component';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
+import { BreakpointObserver, LayoutModule } from '@angular/cdk/layout';
 
 interface VideoSection {
     title: string;
@@ -11,7 +12,13 @@ interface VideoSection {
 
 @Component({
     selector: 'app-mainpage',
-    imports: [CommonModule, HeaderComponent, FooterComponent, RouterModule],
+    imports: [
+        CommonModule,
+        HeaderComponent,
+        FooterComponent,
+        RouterModule,
+        LayoutModule,
+    ],
     templateUrl: './mainpage.component.html',
     styleUrl: './mainpage.component.scss',
 })
@@ -53,10 +60,20 @@ export class MainpageComponent {
         },
         {
             title: 'Romance',
-            images: [
-				'/assets/img/frame1.9.svg', 
-				'/assets/img/frame1.9.1.svg'
-			],
+            images: ['/assets/img/frame1.9.svg', '/assets/img/frame1.9.1.svg'],
         },
     ];
+
+    constructor(
+        private breakpointObserver: BreakpointObserver,
+        private router: Router
+    ) {}
+
+    onImageClick(image: string): void {
+        this.breakpointObserver.observe(['(min-width: 960px)']).subscribe((result) => {
+                const targetRoute = result.matches ? '/video-player' : '/preview';
+                this.router.navigate([targetRoute], { queryParams: { img: image },
+                });
+            });
+    }
 }

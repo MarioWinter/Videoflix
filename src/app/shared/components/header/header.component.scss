@@ -54,4 +54,8 @@ section {
 	}
 }
 
-
+:host(.videopreview-header) section {
+	.header {
+		max-width: 96rem;
+	}
+}

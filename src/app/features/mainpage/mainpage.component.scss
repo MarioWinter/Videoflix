@@ -12,18 +12,19 @@ section {
         position: relative;
         max-width: 165rem;
         width: 100%;
+        min-height: 100vh;
         @media (max-width: 1024px) {
-            height: 100vh;
             justify-content: center;
             display: flex;
             flex-direction: column;
         }
+         @media (max-width: 960px) {
+             margin-top: 18.5rem;
+         }
         @media (max-width: 500px) {
             height: unset;
         }
-        @media (max-width: 769px) {
-            margin-top: 18.5rem;
-        }
+       
         .mainpage-top-content {
             @include flex-center;
             @media (max-width: 960px) {
@@ -37,12 +38,6 @@ section {
                 justify-content: flex-start;
                 @media (max-width: 960px) {
                     display: none;
-                }
-            }
-            .mobile-video-info-container {
-                @media (max-width: 960px) {
-                    display: flex;
-                    width: 100%;
                 }
             }
             .video-info {

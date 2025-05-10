@@ -1,14 +1,17 @@
-<app-header>
-    <button header-button routerLink="">
-        <img src="/assets/icons/logout.svg" />Log out
-    </button>
-</app-header>
-
 <section>
+    <app-header [class.videopreview-header]="isPreviewPage">
+        <button header-button routerLink="">
+            <img src="/assets/icons/logout.svg" />Log out
+        </button>
+    </app-header>
+
     <div class="content-wrapper">
         <div class="video-wrapper">
             <video autoplay muted loop playsinline>
-                <source src="assets/movies/movie-mainpage.mp4" type="video/mp4"/>
+                <source
+                    src="assets/movies/movie-mainpage.mp4"
+                    type="video/mp4"
+                />
                 Dein Browser unterstützt kein Video.
             </video>
         </div>
@@ -23,15 +26,22 @@
                     to reclaim his freedom and expose the truth.
                 </p>
                 <div class="button-container">
-                    <button routerLink="/video-player"> <img src="/assets/icons/play_arrow.svg" />Play</button>
-                    <button (click)="goBack()"> <img class="arrow-back" src="/assets/icons/arrow_back.svg"/>Back</button>
+                    <button routerLink="/video-player">
+                        <img src="/assets/icons/play_arrow.svg" />Play
+                    </button>
+                    <button (click)="goBack()">
+                        <img
+                            class="arrow-back"
+                            src="/assets/icons/arrow_back.svg"
+                        />Back
+                    </button>
                 </div>
             </div>
         </div>
     </div>
-</section>
 
-<app-footer [class.preview-footer]="isPreviewPage">
-    <a routerLink="/privacy-policy">Privacy Policy</a>
-    <a routerLink="/imprint">Imprint</a>
-</app-footer>
+    <app-footer [class.preview-footer]="isPreviewPage">
+        <a routerLink="/privacy-policy">Privacy Policy</a>
+        <a routerLink="/imprint">Imprint</a>
+    </app-footer>
+</section>
