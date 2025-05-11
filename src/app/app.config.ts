@@ -1,4 +1,4 @@
-import { ApplicationConfig, provideExperimentalZonelessChangeDetection, importProvidersFrom } from "@angular/core";
+import { ApplicationConfig, provideExperimentalZonelessChangeDetection } from "@angular/core";
 import { provideRouter } from "@angular/router";
 import { provideHttpClient, withXsrfConfiguration, withInterceptorsFromDi } from "@angular/common/http";
 import { routes } from "./app.routes";

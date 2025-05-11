@@ -6,6 +6,7 @@ import { ButtonComponent } from "../../../shared/components/button/button.compon
 import { passwordMatchValidator } from "../../../shared/utils/custom.validator";
 import { AuthService, RegisterPayload } from "../../../core/services/auth.service";
 import { Router } from "@angular/router";
+import { switchMap } from "rxjs/operators";
 
 /**
  * Registration component for new users.
@@ -100,12 +101,15 @@ export class RegisterComponent {
 		this.serverError = null;
 		if (this.registerForm.valid) {
 			const payload: RegisterPayload = this.registerForm.value as RegisterPayload;
-			this.auth.register(payload).subscribe({
-				next: () => this.router.navigate(["/login"]),
-				error: (err) => {
-					this.serverError = err.error?.non_field_errors?.[0] || "Registration failed";
-				},
-			});
+			this.auth
+				.getCsrfToken()
+				.pipe(switchMap(() => this.auth.register(payload)))
+				.subscribe({
+					next: () => this.router.navigate(["/login"]),
+					error: (err) => {
+						this.serverError = err.error?.non_field_errors?.[0] || "Registration failed";
+					},
+				});
 		}
 	}
 }

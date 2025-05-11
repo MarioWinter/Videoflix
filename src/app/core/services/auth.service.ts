@@ -18,6 +18,15 @@ export class AuthService {
 	constructor(private http: HttpClient) {}
 
 	/**
+	 * Holt den CSRF-Token durch einen GET-Request (setzt csrftoken-Cookie).
+	 */
+	getCsrfToken(): Observable<any> {
+		return this.http.get(`${this.baseUrl}/csrf/`, {
+			withCredentials: true, // sendet Cookies und empfängt csrftoken :contentReference[oaicite:5]{index=5}
+		});
+	}
+
+	/**
 	 * Register a new user.
 	 * @param payload User credentials.
 	 * @returns Observable of server response.

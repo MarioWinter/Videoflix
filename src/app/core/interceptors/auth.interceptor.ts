@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpErrorResponse } from "@angular/common/http";
-import { Observable, throwError, switchMap, catchError, of } from "rxjs";
+import { Observable, throwError, switchMap, catchError } from "rxjs";
 import { AuthService } from "../services/auth.service";
 
 @Injectable()
@@ -18,8 +18,7 @@ export class AuthInterceptor implements HttpInterceptor {
 						switchMap(() => {
 							this.isRefreshing = false;
 							// Ursprüngliche Anfrage wiederholen
-							const retryReq = req.clone();
-							return next.handle(retryReq);
+							return next.handle(req.clone());
 						}),
 						catchError((err) => {
 							this.isRefreshing = false;
