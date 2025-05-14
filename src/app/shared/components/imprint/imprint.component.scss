@@ -17,19 +17,6 @@ section {
     }
 }
 
-.imprint-back-btn {
-    @include flex-center;
-    padding: 1.2rem 2.4rem;
-    border-radius: 4rem;
-    background: none;
-    border: 0.1rem solid var(--pramery-purple);
-    cursor: pointer;
-    img {
-        height: 2.4rem;
-        width: 2.4rem;
-    }
-}
-
 .imprint-wrapper {
     display: flex;
     justify-content: center;

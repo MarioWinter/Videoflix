@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from '../../shared/components/header/header.component';
-import { FooterComponent } from '../../shared/components/footer/footer.component';
 import { RouterModule, Router } from '@angular/router';
 import { BreakpointObserver, LayoutModule } from '@angular/cdk/layout';
 
@@ -14,8 +12,6 @@ interface VideoSection {
     selector: 'app-mainpage',
     imports: [
         CommonModule,
-        HeaderComponent,
-        FooterComponent,
         RouterModule,
         LayoutModule,
     ],

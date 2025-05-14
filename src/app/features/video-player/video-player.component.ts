@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from '../../shared/components/header/header.component';
 import { Location } from '@angular/common';
 
 @Component({
     selector: 'app-video-player',
-    imports: [HeaderComponent],
+    imports: [],
     templateUrl: './video-player.component.html',
     styleUrl: './video-player.component.scss',
 })
