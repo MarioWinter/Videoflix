@@ -2,12 +2,11 @@ import { Component } from '@angular/core';
 import { Location } from '@angular/common';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { FooterComponent } from '../../shared/components/footer/footer.component';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-preview',
-    imports: [CommonModule, RouterModule, FooterComponent],
+    imports: [CommonModule, RouterModule],
     templateUrl: './preview.component.html',
     styleUrl: './preview.component.scss',
 })
