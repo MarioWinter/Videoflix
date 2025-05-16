@@ -1,12 +1,20 @@
-import { Component, ChangeDetectionStrategy } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { ReactiveFormsModule, FormGroup, FormControl, Validators } from "@angular/forms";
-import { InputComponent } from "../../../shared/components/input/input.component";
-import { ButtonComponent } from "../../../shared/components/button/button.component";
-import { passwordMatchValidator } from "../../../shared/utils/custom.validator";
-import { AuthService, RegisterPayload } from "../../../core/services/auth.service";
-import { Router } from "@angular/router";
-import { switchMap } from "rxjs/operators";
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import {
+	ReactiveFormsModule,
+	FormGroup,
+	FormControl,
+	Validators,
+} from '@angular/forms';
+import { InputComponent } from '../../../shared/components/input/input.component';
+import { ButtonComponent } from '../../../shared/components/button/button.component';
+import { passwordMatchValidator } from '../../../shared/utils/custom.validator';
+import {
+	AuthService,
+	RegisterPayload,
+} from '../../../core/services/auth.service';
+import { Router } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
 
 /**
  * Registration component for new users.
@@ -15,11 +23,16 @@ import { switchMap } from "rxjs/operators";
  * - Integrates reusable Input- and ButtonComponents.
  */
 @Component({
-	selector: "app-register",
+	selector: 'app-register',
 	standalone: true,
-	imports: [CommonModule, ReactiveFormsModule, InputComponent, ButtonComponent],
-	templateUrl: "./register.component.html",
-	styleUrls: ["./register.component.scss"],
+	imports: [
+		CommonModule,
+		ReactiveFormsModule,
+		InputComponent,
+		ButtonComponent,
+	],
+	templateUrl: './register.component.html',
+	styleUrls: ['./register.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RegisterComponent {
@@ -30,22 +43,22 @@ export class RegisterComponent {
 	 */
 	registerForm = new FormGroup(
 		{
-			email: new FormControl<string>("", {
+			email: new FormControl<string>('', {
 				validators: [Validators.required, Validators.email],
-				updateOn: "blur",
+				updateOn: 'blur',
 			}),
-			password1: new FormControl<string>("", {
+			password1: new FormControl<string>('', {
 				validators: [Validators.required, Validators.minLength(8)],
-				updateOn: "blur",
+				updateOn: 'blur',
 			}),
-			password2: new FormControl<string>("", {
+			password2: new FormControl<string>('', {
 				validators: [Validators.required, Validators.minLength(8)],
-				updateOn: "blur",
+				updateOn: 'blur',
 			}),
 		},
 		{
 			validators: passwordMatchValidator,
-			updateOn: "blur",
+			updateOn: 'blur',
 		}
 	);
 
@@ -58,8 +71,13 @@ export class RegisterComponent {
 	 * @returns True if password2 has been touched, has a value, and does not match password1.
 	 */
 	get showPasswordMismatch(): boolean {
-		const control = this.registerForm.get("password2");
-		return !!(control && control.value && control.touched && this.registerForm.hasError("passwordMismatch"));
+		const control = this.registerForm.get('password2');
+		return !!(
+			control &&
+			control.value &&
+			control.touched &&
+			this.registerForm.hasError('passwordMismatch')
+		);
 	}
 
 	/**
@@ -82,11 +100,11 @@ export class RegisterComponent {
 		if (!control || !control.errors) return null;
 		const errs = control.errors;
 
-		if (errs["email"]) {
-			return "Invalid email";
+		if (errs['email']) {
+			return 'Invalid email';
 		}
-		if (errs["minlength"]) {
-			const len = errs["minlength"].requiredLength;
+		if (errs['minlength']) {
+			const len = errs['minlength'].requiredLength;
 			return `Password must be at least ${len} characters long`;
 		}
 		return null;
@@ -100,14 +118,17 @@ export class RegisterComponent {
 	onSubmit(): void {
 		this.serverError = null;
 		if (this.registerForm.valid) {
-			const payload: RegisterPayload = this.registerForm.value as RegisterPayload;
+			const payload: RegisterPayload = this.registerForm
+				.value as RegisterPayload;
 			this.auth
 				.getCsrfToken()
 				.pipe(switchMap(() => this.auth.register(payload)))
 				.subscribe({
-					next: () => this.router.navigate(["/login"]),
+					next: () => this.router.navigate(['/verify-email']),
 					error: (err) => {
-						this.serverError = err.error?.non_field_errors?.[0] || "Registration failed";
+						this.serverError =
+							err.error?.non_field_errors?.[0] ||
+							'Registration failed';
 					},
 				});
 		}
