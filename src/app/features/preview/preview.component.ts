@@ -11,7 +11,6 @@ import { ActivatedRoute } from '@angular/router';
     styleUrl: './preview.component.scss',
 })
 export class PreviewComponent {
-    isPreviewPage = true;
     activeImage!: string;
 
     constructor(private route: ActivatedRoute, private location: Location) {}

@@ -10,16 +10,11 @@ interface VideoSection {
 
 @Component({
     selector: 'app-mainpage',
-    imports: [
-        CommonModule,
-        RouterModule,
-        LayoutModule,
-    ],
+    imports: [ CommonModule, RouterModule, LayoutModule ],
     templateUrl: './mainpage.component.html',
     styleUrl: './mainpage.component.scss',
 })
 export class MainpageComponent {
-    isMainPage = true;
 
     encodeURIComponent(path: string): string {
         return encodeURIComponent(path);

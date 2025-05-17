@@ -10,20 +10,7 @@ import { Location } from '@angular/common';
 export class VideoPlayerComponent {
     constructor(private location: Location) {}
 
-    isVideoPlayer = true;
-
     goBack() {
         this.location.back();
-    }
-
-    showHeader = true;
-    private hideTimeout: any;
-
-    showControls() {
-        this.showHeader = true;
-        clearTimeout(this.hideTimeout);
-        this.hideTimeout = setTimeout(() => {
-            this.showHeader = false;
-        }, 3000);
     }
 }
