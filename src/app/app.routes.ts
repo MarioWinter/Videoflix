@@ -6,9 +6,11 @@ import { RegisterComponent } from './features/auth/register/register.component';
 import { ImprintComponent } from './shared/components/imprint/imprint.component';
 import { PrivacyPolicyComponent } from './shared/components/privacy-policy/privacy-policy.component';
 import { VerifyEmailComponent } from './features/auth/verify-email/verify-email.component';
+import { LoginComponent } from './features/auth/login/login.component';
 
 export const routes: Routes = [
 	{ path: 'register', component: RegisterComponent },
+	{ path: 'login', component: LoginComponent },
 	{
 		path: '',
 		component: LandingpageComponent,
