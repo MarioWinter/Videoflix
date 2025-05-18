@@ -1,1 +1,39 @@
-<p>login works!</p>
+<div class="atf-img login-wrapper">
+	<div class="login-card">
+		<h2>login</h2>
+		<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+			<app-input
+				class="form-input"
+				formControlName="email"
+				type="email"
+				placeholder="Email Address"
+			>
+			</app-input>
+			<div class="error">
+				@if (showError('email')) {
+				{{ errorMessage("email") }}
+				} @else { }
+			</div>
+
+			<app-input
+				class="form-input"
+				formControlName="password"
+				type="password"
+				placeholder="Enter a password"
+				[isVisible]="true"
+			>
+			</app-input>
+			<div class="error">
+				@if (showError('password')) {
+				{{ errorMessage("password") }}
+				} @else { }
+			</div>
+			<app-button
+				class="form-button"
+				type="submit"
+				[disabled]="loginForm.invalid"
+				>Login</app-button
+			>
+		</form>
+	</div>
+</div>

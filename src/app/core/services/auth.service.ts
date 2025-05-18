@@ -1,6 +1,6 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 export interface RegisterPayload {
 	email: string;
@@ -8,12 +8,17 @@ export interface RegisterPayload {
 	password2: string;
 }
 
+export interface LoginPayload {
+	email: string;
+	password: string;
+}
+
 /**
  * AuthService handles registration, login, refresh and user-details retrieval.
  */
-@Injectable({ providedIn: "root" })
+@Injectable({ providedIn: 'root' })
 export class AuthService {
-	private readonly baseUrl = "/api/auth";
+	private readonly baseUrl = '/api/auth';
 
 	constructor(private http: HttpClient) {}
 
@@ -38,19 +43,13 @@ export class AuthService {
 	}
 
 	/**
-	 * Login and set JWT cookies.
-	 * @param email User E-Mail.
-	 * @param password User password.
-	 * @returns Observable of server response.
+	 * Login with credentials object.
+	 * @param payload Contains email and password.
 	 */
-	login(email: string, password: string): Observable<any> {
-		return this.http.post(
-			`${this.baseUrl}/login/`,
-			{ email, password },
-			{
-				withCredentials: true,
-			}
-		);
+	login(payload: LoginPayload): Observable<any> {
+		return this.http.post(`${this.baseUrl}/login/`, payload, {
+			withCredentials: true,
+		});
 	}
 
 	/**
@@ -80,6 +79,8 @@ export class AuthService {
 	 * @returns An observable containing the user's details, such as ID, email, etc.
 	 */
 	getUserDetails(): Observable<any> {
-		return this.http.get(`${this.baseUrl}/user/`, { withCredentials: true });
+		return this.http.get(`${this.baseUrl}/user/`, {
+			withCredentials: true,
+		});
 	}
 }
