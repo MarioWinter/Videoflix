@@ -5,9 +5,10 @@
 }
 
 ::ng-deep [header-button] {
+	color: var(--white);
 	&:hover {
 		cursor: pointer;
-		background-color: #424fdf;
+		background-color: var(--pramery-purple);
 	}
 }
 
@@ -23,8 +24,8 @@ section {
 		justify-content: space-between;
 		align-items: center;
 		width: 100%;
-		max-width: 1440px;
-		padding: 48px 96px;
+		max-width: 165rem;
+		padding: 4.8rem 9.6rem;
 		background-color: transparent;
 	}
 }
@@ -40,7 +41,7 @@ section {
 
 	section {
 		.header {
-			padding: 16px 32px;
+			padding: 1.6rem 3.2rem;
 		}
 	}
 }
@@ -48,7 +49,28 @@ section {
 @media (max-width: 350px) {
 	section {
 		.header {
-			padding: 16px 10px;
+			padding: 1.6rem 1rem;
 		}
+	}
+}
+
+:host(.videopreview-header) section {
+	.header {
+		max-width: 96rem;
+	}
+}
+
+.videoplayer-back-btn,
+.imprint-back-btn,
+.privacy-back-btn {
+	@include flex-center;
+	padding: 1.2rem 2.4rem;
+	border-radius: 4rem;
+	background: none;
+	border: 0.1rem solid var(--pramery-purple);
+	cursor: pointer;
+	img {
+		height: 2.4rem;
+		width: 2.4rem;
 	}
 }

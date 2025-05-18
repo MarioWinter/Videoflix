@@ -1,5 +1,27 @@
+@if (currentRoute === '/mainpage') {
 <section>
-  <div class="footer-legal-links">
-    <ng-content></ng-content>    
-  </div>
+	<div class="mainpage-footer">
+		<a routerLink="/privacy-policy">Privacy Policy</a>
+		<a routerLink="/imprint">Imprint</a>
+	</div>
 </section>
+} @else { @if (currentRoute === '/') {
+<section>
+	<div class="footer-legal-links">
+		<a routerLink="/privacy-policy">Privacy Policy</a>
+		<a routerLink="/imprint">Imprint</a>
+	</div>
+</section>
+} @else { @if (currentRoute === '/privacy-policy') {
+<section>
+	<div class="privacy-footer">
+		<a routerLink="/imprint">Imprint</a>
+	</div>
+</section>
+} @else { @if (currentRoute === '/imprint') {
+<section>
+	<div class="imprint-footer">
+		<a routerLink="/privacy-policy">Privacy Policy</a>
+	</div>
+</section>
+} } } }
