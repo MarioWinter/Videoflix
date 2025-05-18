@@ -4,48 +4,86 @@
 	font-family: "DM Sans", sans-serif;
 }
 
+section {
+	@include flex-center;
+	background-color: var(--mainpage-bg);
+}
+
 .footer-legal-links {
 	@include flex-center;
 	position: absolute;
-	bottom: 48px;
+	bottom: 4.8rem;
 	left: 50%;
 	transform: translateX(-50%);
-	gap: 48px;
-}
-
-:host(.mainpage-footer) section {
-	@include flex-center;
-}
-
-:host(.mainpage-footer) .footer-legal-links {
-	justify-content: flex-end;
-	padding: 0 96px 16px 96px;
-	transform: none;
-	right: 0;
-	@media (max-width: 769px) {
-		padding: 0 32px 16px 32px;
+	gap: 4.8rem;
+	width: 100%;
+	a {
+		color: var(--white);
+		text-decoration: none;
+		cursor: pointer;
+		font-size: 1.8rem;
+		&:hover {
+			color: var(--pramery-purple);
+			transition: color 0.5s ease, transform 0.5s ease;
+		}
 	}
 }
 
-::ng-deep .footer-legal-links a {
-	color: white;
-	text-decoration: none;
-	cursor: pointer;
-	font-size: 18px;
-	&:hover {
-		color: #2e3edf;
-		transition: color 0.5s ease, transform 0.5s ease;
+.mainpage-footer {
+	width: 100%;
+	max-width: 165rem;
+	display: flex;
+	justify-content: flex-end;
+	position: relative;
+	padding: 0 9.6rem 1.6rem 9.6rem;
+	gap: 1.6rem;
+	a {
+		color: var(--white);
+		text-decoration: none;
+		cursor: pointer;
+		font-size: 1.8rem;
+		&:hover {
+			color: var(--pramery-purple);
+			transition: color 0.5s ease, transform 0.5s ease;
+		}
+	}
+	@media (max-width: 769px) {
+		padding: 1.6rem 3.2rem;
+	}
+	@media (max-width: 350px) {
+		padding: 1.6rem 1rem;
+	}
+}
+
+.privacy-footer,
+.imprint-footer {
+	@include flex-center;
+	width: 100%;
+	position: relative;
+	padding: 0 9.6rem 1.6rem 9.6rem;
+	a {
+		color: var(--white);
+		text-decoration: none;
+		cursor: pointer;
+		font-size: 1.8rem;
+		&:hover {
+			color: var(--pramery-purple);
+			transition: color 0.5s ease, transform 0.5s ease;
+		}
+	}
+	@media (max-width: 769px) {
+		padding: 1.6rem 3.2rem;
 	}
 }
 
 @media (max-width: 769px) {
 	::ng-deep .footer-legal-links a {
-		font-size: 16px;
+		font-size: 1.6rem;
 	}
 }
 
 @media (max-width: 350px) {
 	::ng-deep .footer-legal-links a {
-		font-size: 14px;
+		font-size: 1.4rem;
 	}
 }
