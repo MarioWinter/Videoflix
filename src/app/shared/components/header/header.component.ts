@@ -4,21 +4,28 @@ import { Router } from '@angular/router';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-header',
-  imports: [ CommonModule, RouterLink ],
-  templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+    selector: 'app-header',
+    imports: [CommonModule, RouterLink],
+    templateUrl: './header.component.html',
+    styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
-  currentRoute = '';
+    currentRoute = '';
+    videoTitle: string = '';
 
-  constructor(private router: Router) {
-    this.router.events.subscribe(() => {
-       this.currentRoute = this.router.url.split('?')[0];
-    });
-  }
+    constructor(private router: Router) {
+        this.router.events.subscribe(() => {
+            this.currentRoute = this.router.url.split('?')[0];
 
-  goBack() {
-    window.history.back(); 
-  }
+            if (this.currentRoute === '/video-player') {
+                this.videoTitle = 'The Knastboy';
+            } else {
+                this.videoTitle = '';
+            }
+        });
+    }
+
+    goBack() {
+        window.history.back();
+    }
 }

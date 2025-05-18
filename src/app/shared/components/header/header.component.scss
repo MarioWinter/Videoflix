@@ -60,7 +60,7 @@ section {
     }
 }
 
-.videoplayer-back-btn, 
+.videoplayer-back-btn,
 .imprint-back-btn,
 .privacy-back-btn {
     @include flex-center;
@@ -75,3 +75,7 @@ section {
     }
 }
 
+.video-title {
+    opacity: 0.4;
+    color: white;
+}

@@ -1,5 +1,5 @@
 <section>
-    <div class="header" [ngClass]="{ 'videoplayer-header': currentRoute === '/videoplayer' }">
+    <div class="header" [ngClass]="{ 'videoplayer-header': currentRoute === '/video-player' }">
         <div class="desktop-logo">
             <img src="/assets/img/videoflix-main.svg" />
         </div>
@@ -13,9 +13,10 @@
             </button>
         } 
         @else if (currentRoute === '/video-player') {
+            <div class="video-title">{{ videoTitle }}</div>
             <button header-button class="videoplayer-back-btn" (click)="goBack()">
                 <img src="/assets/icons/arrow_back.svg" />
-            </button>
+            </button>            
         } 
         @else if (currentRoute === '/preview') {
             <button header-button routerLink="">

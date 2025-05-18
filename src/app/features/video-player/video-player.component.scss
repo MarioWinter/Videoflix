@@ -8,23 +8,6 @@ section {
     background-color: var(--mainpage-bg);
     position: relative;
     min-height: 100vh;
-    .video-overlay {
-        position: relative;
-      
-        &:hover app-header,
-        &:hover .your-overlay-class {
-          opacity: 1;
-          pointer-events: all;
-        }
-      
-        app-header {
-          opacity: 0;
-          transition: opacity 0.3s;
-          position: absolute;
-          top: 0;
-          width: 100%;
-        }
-      }
 }
 
 video {
@@ -43,4 +26,10 @@ video {
     display: flex;
     flex-direction: row-reverse;
     padding: 2rem 3.2rem !important;
+}
+
+::ng-deep app-header .header.hide {
+    opacity: 0 !important;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
 }

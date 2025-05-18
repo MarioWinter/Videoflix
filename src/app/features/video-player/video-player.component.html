@@ -1,6 +1,6 @@
 <section>
   <div class="video-overlay">
-    <video #videoElement controls>
+    <video #videoElement controls (play)="hideHeader()" (pause)="showHeader()">
       <source src="assets/movies/movie-mainpage.mp4" type="video/mp4" />
     </video>
   </div>
