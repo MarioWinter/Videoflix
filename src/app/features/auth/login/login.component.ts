@@ -9,7 +9,7 @@ import {
 import { InputComponent } from '../../../shared/components/input/input.component';
 import { ButtonComponent } from '../../../shared/components/button/button.component';
 import { AuthService, LoginPayload } from '../../../core/services/auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 
 @Component({
@@ -19,6 +19,7 @@ import { switchMap } from 'rxjs/operators';
 		ReactiveFormsModule,
 		InputComponent,
 		ButtonComponent,
+		RouterLink,
 	],
 	templateUrl: './login.component.html',
 	styleUrl: './login.component.scss',
