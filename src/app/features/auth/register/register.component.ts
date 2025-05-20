@@ -111,9 +111,14 @@ export class RegisterComponent {
 	}
 
 	/**
-	 * Handles form submission when all validations pass.
+	 * Submits the registration form after validating inputs and retrieving CSRF token.
+	 *
 	 * @remarks
-	 * Logs the form value to the console; replace with real registration logic.
+	 * - Clears any existing server error message.
+	 * - Fetches CSRF token via `getCsrfToken()`.
+	 * - Performs registration request with provided user credentials.
+	 * - On success, navigates to the email verification page.
+	 * - On failure, captures and displays the server’s error message.
 	 */
 	onSubmit(): void {
 		this.serverError = null;

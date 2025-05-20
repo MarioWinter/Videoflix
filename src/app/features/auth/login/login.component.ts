@@ -71,21 +71,29 @@ export class LoginComponent {
 	}
 
 	/**
-	 * Handles form submission when all validations pass.
+	 * Submits the login form after validating inputs and retrieving CSRF token.
+	 *
 	 * @remarks
-	 * Logs the form value to the console; replace with real registration logic.
+	 * - Clears any existing server error message.
+	 * - Fetches CSRF token via `getCsrfToken()`.
+	 * - Performs login request with provided credentials.
+	 * - On success, navigates to the main page.
+	 * - On failure, captures and displays the server’s error message.
 	 */
 	onSubmit(): void {
 		this.serverError = null;
 		if (this.loginForm.valid) {
 			const payload: LoginPayload = this.loginForm.value as LoginPayload;
-			this.auth.login(payload).subscribe({
-				next: () => this.router.navigate(['/mainpage']),
-				error: (err) => {
-					this.serverError =
-						err.error?.non_field_errors?.[0] || 'Login failed';
-				},
-			});
+			this.auth
+				.getCsrfToken()
+				.pipe(switchMap(() => this.auth.login(payload)))
+				.subscribe({
+					next: () => this.router.navigate(['/mainpage']),
+					error: (err) => {
+						this.serverError =
+							err.error?.non_field_errors?.[0] || 'Login failed';
+					},
+				});
 		}
 	}
 }
