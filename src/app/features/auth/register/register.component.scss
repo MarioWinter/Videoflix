@@ -1,7 +1,8 @@
 /* Hintergrundbild-Wrapper */
 .atf-img {
 	height: 100vh;
-	background-image: url("/assets/img/signup-bg.jpeg");
+	background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+		url("/assets/img/signup-bg.jpeg");
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: cover;
