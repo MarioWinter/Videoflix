@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { BehaviorSubject, Observable, tap, switchMap } from 'rxjs';
 
 export interface RegisterPayload {
 	email: string;
@@ -11,6 +11,10 @@ export interface RegisterPayload {
 export interface LoginPayload {
 	email: string;
 	password: string;
+}
+
+export interface ResetPayload {
+	email: string;
 }
 
 /**
@@ -94,5 +98,19 @@ export class AuthService {
 	 */
 	logout(): void {
 		this.loggedInSubject.next(false);
+	}
+
+	/**
+	 * Initiates password-reset flow by sending the user's email.
+	 * Endpoint: POST /password/reset/ with { email } :contentReference[oaicite:1]{index=1}
+	 */
+	forgotPassword(payload: ResetPayload): Observable<any> {
+		return this.getCsrfToken().pipe(
+			switchMap(() =>
+				this.http.post(`${this.baseUrl}/password/reset/`, payload, {
+					withCredentials: true,
+				})
+			)
+		);
 	}
 }
