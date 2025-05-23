@@ -6,27 +6,27 @@ import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs';
 
 @Component({
-	selector: 'app-root',
-	imports: [RouterOutlet, HeaderComponent, FooterComponent],
-	templateUrl: './app.component.html',
-	styleUrl: './app.component.scss',
+    selector: 'app-root',
+    imports: [RouterOutlet, HeaderComponent, FooterComponent],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss',
 })
 export class AppComponent {
-	title = 'Videoflix';
+    title = 'Videoflix';
 
-	constructor(private router: Router) {
-		this.router.events
-			.pipe(filter((event) => event instanceof NavigationEnd))
-			.subscribe(() => {
-				this.scrollToTop();
-			});
-	}
+    constructor(private router: Router) {
+        this.router.events
+            .pipe(filter((event) => event instanceof NavigationEnd))
+            .subscribe(() => {
+                this.scrollToTop();
+            });
+    }
 
-	scrollToTop(): void {
-		window.scroll({
-			top: 0,
-			left: 0,
-			behavior: 'smooth',
-		});
-	}
+    scrollToTop(): void {
+        window.scroll({
+            top: 0,
+            left: 0,
+            behavior: 'smooth',
+        });
+    }
 }

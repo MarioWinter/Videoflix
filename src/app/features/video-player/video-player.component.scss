@@ -1,28 +1,35 @@
-.video-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.7);
+@use '../../../styles.scss' as *;
+
+* {
+    font-family: 'DM Sans', sans-serif;
+}
+
+section {
+    background-color: var(--mainpage-bg);
+    position: relative;
+    min-height: 100vh;
+}
+
+video {
+    width: 100%;
+}
+
+::ng-deep app-header .desktop-logo {
+    display: none;
+}
+
+::ng-deep app-header .mobile-logo {
+    display: block !important;
+}
+
+::ng-deep app-header .header {
     display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  video {
-    max-width: 90%;
-    max-height: 80%;
-  }
-  
-  button {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background-color: red;
-    color: white;
-    border: none;
-    padding: 10px;
-    font-size: 16px;
-  }
-  
+    flex-direction: row-reverse;
+    padding: 2rem 3.2rem !important;
+}
+
+::ng-deep app-header .header.hide {
+    opacity: 0 !important;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}

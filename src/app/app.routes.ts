@@ -6,9 +6,13 @@ import { RegisterComponent } from './features/auth/register/register.component';
 import { ImprintComponent } from './shared/components/imprint/imprint.component';
 import { PrivacyPolicyComponent } from './shared/components/privacy-policy/privacy-policy.component';
 import { VerifyEmailComponent } from './features/auth/verify-email/verify-email.component';
+import { PreviewComponent } from "./features/preview/preview.component";
+import { VideoPlayerComponent } from "./features/video-player/video-player.component";
 
 export const routes: Routes = [
-	{ path: 'register', component: RegisterComponent },
+	{ 
+    path: 'register', component: RegisterComponent 
+  },
 	{
 		path: '',
 		component: LandingpageComponent,
@@ -18,7 +22,24 @@ export const routes: Routes = [
 		component: MainpageComponent,
 		canActivate: [AuthGuard],
 	},
-	{ path: 'imprint', component: ImprintComponent },
-	{ path: 'verify-email', component: VerifyEmailComponent },
-	{ path: 'privacy-policy', component: PrivacyPolicyComponent },
+	{
+		path: "preview",
+		component: PreviewComponent,
+	},
+	{
+		path: "video-player",
+		component: VideoPlayerComponent,
+	},
+	{
+		path: "imprint",
+		component: ImprintComponent,
+	},
+	{
+		path: "privacy-policy",
+		component: PrivacyPolicyComponent,
+	},
+	{ 
+    path: 'verify-email', 
+    component: VerifyEmailComponent, 
+  },
 ];
