@@ -2,7 +2,7 @@
 	class="form-btn"
 	[type]="type"
 	[disabled]="disabled"
-	[ngClass]="{ 'disable-btn': disabled }"
+	[ngClass]="disabledStyle()"
 >
 	<ng-content></ng-content>
 </button>
