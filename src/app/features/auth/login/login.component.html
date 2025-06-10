@@ -1,5 +1,5 @@
-<div class="atf-img login-wrapper">
-	<div class="login-card">
+<div class="atf-img card-wrapper">
+	<div class="card">
 		<h2>Log in</h2>
 		<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 			<app-input
@@ -28,10 +28,7 @@
 				{{ errorMessage("password") }}
 				} @else { }
 			</div>
-			<app-button
-				class="form-button"
-				type="submit"
-				[disabled]="loginForm.invalid"
+			<app-button type="submit" [disabled]="loginForm.invalid"
 				>Login</app-button
 			>
 		</form>

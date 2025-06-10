@@ -8,10 +8,11 @@
 	--content-bg: rgba(27, 27, 34, 0.85);
 	--text-field-bg: rgba(28, 26, 32, 0.8);
 	--pramery-purple: rgba(46, 62, 223, 1);
-	--error-red: rgba(28, 26, 32, 0.8);
+	--error-red: rgba(255, 0, 46, 1);
 	--white: rgba(255, 255, 255, 1);
 	--utility-white: rgba(211, 211, 211, 1);
 	--mainpage-bg: rgba(20, 20, 20, 1);
+	--grey: rgba(94, 94, 94, 1);
 }
 
 html {
@@ -59,4 +60,69 @@ button {
 	background-color: var(--pramery-purple);
 	gap: 0.7rem;
 	cursor: pointer;
+}
+
+/* Auth Styles*/
+
+.atf-img {
+	height: 100vh;
+	background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+		url("/assets/img/signup-bg.jpeg");
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+
+.card-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 2rem;
+
+	.card {
+		display: flex;
+		flex-direction: column;
+		background-color: var(--content-bg);
+		padding: 4.3rem 5.6rem;
+		border-radius: 4.8rem;
+		width: 100%;
+		max-width: 52rem;
+		box-shadow: 0 1.2rem 4rem rgba(0, 0, 0, 0.25);
+		color: var(--white);
+		gap: 3.5rem;
+
+		h2 {
+			text-align: center;
+			font-size: 4.8rem;
+			font-weight: 700;
+		}
+
+		form {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 100%;
+			flex-direction: column;
+			gap: 1rem;
+			.form-input {
+				width: 100%;
+			}
+		}
+
+		.error {
+			color: var(--error-red);
+			font-size: 1.5rem;
+			height: 1.5rem;
+			width: 100%;
+			margin-top: -0.5rem;
+			margin-bottom: 0.5rem;
+		}
+	}
+}
+/* Auth Responsive*/
+@media (max-width: 480px) {
+	.register-card {
+		padding: 1.5rem;
+		width: 90%;
+	}
 }

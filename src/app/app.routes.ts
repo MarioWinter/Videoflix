@@ -8,6 +8,7 @@ import { PrivacyPolicyComponent } from './shared/components/privacy-policy/priva
 import { VerifyEmailComponent } from './features/auth/verify-email/verify-email.component';
 import { LoginComponent } from './features/auth/login/login.component';
 import { ForgotPasswordComponent } from './features/auth/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './features/auth/reset-password/reset-password.component';
 
 export const routes: Routes = [
 	{ path: 'register', component: RegisterComponent },
@@ -23,6 +24,7 @@ export const routes: Routes = [
 	},
 	{ path: 'imprint', component: ImprintComponent },
 	{ path: 'verify-email', component: VerifyEmailComponent },
-	{ path: 'password-reset', component: ForgotPasswordComponent },
+	{ path: 'forgot-password', component: ForgotPasswordComponent },
+	{ path: 'reset-password', component: ResetPasswordComponent },
 	{ path: 'privacy-policy', component: PrivacyPolicyComponent },
 ];
