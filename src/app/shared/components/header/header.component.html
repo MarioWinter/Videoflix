@@ -1,39 +1,34 @@
 <section>
-	<div
-		class="header"
-		[ngClass]="{ 'videoplayer-header': currentRoute === '/videoplayer' }"
-	>
-		<div class="desktop-logo">
-			<img src="/assets/img/videoflix-main.svg" />
-		</div>
-		<div class="mobile-logo d-none">
-			<img src="/assets/img/videoflix-mobile.svg" />
-		</div>
+    <div class="header" [ngClass]="{ 'videoplayer-header': currentRoute === '/video-player' }">
+        <div class="desktop-logo">
+            <img src="/assets/img/videoflix-main.svg" />
+        </div>
+        <div class="mobile-logo d-none">
+            <img src="/assets/img/videoflix-mobile.svg" />
+        </div>
 
-		@if (currentRoute === '/mainpage') {
-		<button header-button routerLink="">
-			<img src="/assets/icons/logout.svg" />Log out
-		</button>
-		} @else if (currentRoute === '/video-player') {
-		<button header-button class="videoplayer-back-btn" (click)="goBack()">
-			<img src="/assets/icons/arrow_back.svg" />
-		</button>
-		} @else if (currentRoute === '/preview') {
-		<button header-button routerLink="">
-			<img src="/assets/icons/logout.svg" />Log out
-		</button>
-		} @else if (currentRoute === '/imprint' || currentRoute ===
-		'/privacy-policy') {
-		<button
-			header-button
-			(click)="goBack()"
-			[ngClass]="{
-				'imprint-back-btn': currentRoute === '/imprint',
-				'privacy-back-btn': currentRoute === '/privacy-policy'
-			}"
-		>
-			<img src="/assets/icons/arrow_back.svg" />
-		</button>
+        @if (currentRoute === '/mainpage') {
+            <button header-button routerLink="">
+                <img src="/assets/icons/logout.svg" />Log out
+            </button>
+        } 
+        @else if (currentRoute === '/video-player') {
+            <div class="video-title">{{ videoTitle }}</div>
+            <button header-button class="videoplayer-back-btn" (click)="goBack()">
+                <img src="/assets/icons/arrow_back.svg" />
+            </button>            
+        } 
+        @else if (currentRoute === '/preview') {
+            <button header-button routerLink="">
+                <img src="/assets/icons/logout.svg" />Log out
+            </button>
+        } 
+        @else if (currentRoute === '/imprint' || currentRoute === '/privacy-policy') {
+            <button header-button (click)="goBack()" [ngClass]="{
+                'imprint-back-btn': currentRoute === '/imprint',
+                'privacy-back-btn': currentRoute === '/privacy-policy'}">
+                <img src="/assets/icons/arrow_back.svg" />
+            </button>
 
 		} @else {
 		<button header-button routerLink="/login">Log in</button>
