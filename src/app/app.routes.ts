@@ -21,8 +21,8 @@ export const routes: Routes = [
 	{ path: 'reset-password', component: ResetPasswordComponent },
 	{ path: '', component: LandingpageComponent },
 	{ path: 'mainpage', component: MainpageComponent, canActivate: [AuthGuard] },
-  { path: 'preview', component: PreviewComponent },
-  { path: 'video-player', component: VideoPlayerComponent },
+  	{ path: 'preview', component: PreviewComponent },
+  	{ path: 'video-player', component: VideoPlayerComponent },
 	{ path: 'imprint', component: ImprintComponent },
 	{ path: 'privacy-policy', component: PrivacyPolicyComponent },
 

@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { RouterLink } from '@angular/router';
+import { filter } from 'rxjs';
 
 @Component({
     selector: 'app-footer',
@@ -12,9 +13,27 @@ import { RouterLink } from '@angular/router';
 export class FooterComponent {
     currentRoute = '';
 
+    allowedFooterRoutes = [
+        '/',
+        '/login',
+        '/register',
+        '/verify-email',
+        '/forgot-password',
+        '/reset-password',
+        '/mainpage',
+        '/privacy-policy',
+        '/imprint',
+    ];
+
+    showFooter(): boolean {
+        return this.allowedFooterRoutes.includes(this.currentRoute);
+    }
+
     constructor(private router: Router) {
-        this.router.events.subscribe(() => {
-            this.currentRoute = this.router.url.split('?')[0];
-        });
+        this.router.events
+            .pipe(filter((event) => event instanceof NavigationEnd))
+            .subscribe((event: NavigationEnd) => {
+                this.currentRoute = event.urlAfterRedirects.split('?')[0];
+            });
     }
 }
