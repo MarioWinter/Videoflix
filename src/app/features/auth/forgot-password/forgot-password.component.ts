@@ -30,7 +30,7 @@ export class ForgotPasswordComponent {
 	forgotPasswordForm = new FormGroup({
 		email: new FormControl<string>('', {
 			validators: [Validators.required, Validators.email],
-			updateOn: 'blur',
+			updateOn: 'change',
 		}),
 	});
 
@@ -67,8 +67,7 @@ export class ForgotPasswordComponent {
 		if (this.forgotPasswordForm.valid) {
 			const payload = this.forgotPasswordForm.value as ResetPayload;
 			this.auth.forgotPassword(payload).subscribe({
-				next: () =>
-					this.router.navigate(['/auth/users/reset_password/']),
+				next: () => this.router.navigate(['/reset-password']),
 				error: (err) => {
 					this.serverError = err.error?.detail || 'Reset failed';
 				},
