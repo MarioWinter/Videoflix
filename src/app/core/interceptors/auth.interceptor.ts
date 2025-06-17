@@ -1,3 +1,4 @@
+// core/interceptors/auth.interceptor.ts
 import { Injectable } from '@angular/core';
 import {
 	HttpEvent,
@@ -13,22 +14,12 @@ import { AuthService } from '../services/auth.service';
  * Interceptor that catches 401 errors, attempts to refresh the access token,
  * and retries the failed request once refresh succeeds.
  */
-
 @Injectable({ providedIn: 'root' })
 export class AuthInterceptor implements HttpInterceptor {
 	private isRefreshing = false;
 
 	constructor(private auth: AuthService) {}
 
-	/**
-	 * Intercepts HTTP responses, looks for 401 Unauthorized errors,
-	 * and triggers a token refresh if necessary.
-	 *
-	 * @param req The original HTTP request.
-	 * @param next The next HTTP handler.
-	 * @returns An Observable of the HTTP event stream,
-	 *          possibly retried after token refresh.
-	 */
 	intercept(
 		req: HttpRequest<any>,
 		next: HttpHandler
@@ -37,7 +28,7 @@ export class AuthInterceptor implements HttpInterceptor {
 			catchError((error: HttpErrorResponse) => {
 				if (
 					error.status === 401 &&
-					!req.url.endsWith('/token/refresh/') &&
+					!req.url.endsWith('/refresh/') &&
 					!this.isRefreshing
 				) {
 					this.isRefreshing = true;
