@@ -125,17 +125,15 @@ export class RegisterComponent {
 		if (this.registerForm.valid) {
 			const payload: RegisterPayload = this.registerForm
 				.value as RegisterPayload;
-			this.auth
-				.getCsrfToken()
-				.pipe(switchMap(() => this.auth.register(payload)))
-				.subscribe({
-					next: () => this.router.navigate(['/verify-email']),
-					error: (err) => {
-						this.serverError =
-							err.error?.non_field_errors?.[0] ||
-							'Registration failed';
-					},
-				});
+			this.auth.register(payload).subscribe({
+				next: () => this.router.navigate(['/verify-email']),
+				error: (err) => {
+					this.serverError =
+						err.error?.non_field_errors?.[0] ||
+						err.error?.detail ||
+						'Registration failed';
+				},
+			});
 		}
 	}
 }
