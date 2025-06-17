@@ -85,16 +85,15 @@ export class LoginComponent {
 		this.serverError = null;
 		if (this.loginForm.valid) {
 			const payload: LoginPayload = this.loginForm.value as LoginPayload;
-			this.auth
-				.getCsrfToken()
-				.pipe(switchMap(() => this.auth.login(payload)))
-				.subscribe({
-					next: () => this.router.navigate(['/mainpage']),
-					error: (err) => {
-						this.serverError =
-							err.error?.non_field_errors?.[0] || 'Login failed';
-					},
-				});
+			this.auth.login(payload).subscribe({
+				next: () => this.router.navigate(['/mainpage']),
+				error: (err) => {
+					this.serverError =
+						err.error?.non_field_errors?.[0] ||
+						err.error?.detail ||
+						'Login failed';
+				},
+			});
 		}
 	}
 }
