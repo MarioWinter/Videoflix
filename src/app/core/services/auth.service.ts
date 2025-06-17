@@ -4,8 +4,8 @@ import { BehaviorSubject, Observable, tap, switchMap } from 'rxjs';
 
 export interface RegisterPayload {
 	email: string;
-	password1: string;
-	password2: string;
+	password: string;
+	re_password: string;
 }
 
 export interface LoginPayload {
@@ -52,11 +52,11 @@ export class AuthService {
 	/**
 	 * Registers a new user with provided credentials.
 	 *
-	 * @param payload Object containing email, password1, and password2.
+	 * @param payload Object containing email, password, and re_password.
 	 * @returns An Observable of the server’s registration response.
 	 */
 	register(payload: RegisterPayload): Observable<any> {
-		return this.http.post(`${this.baseUrl}/registration/`, payload, {
+		return this.http.post(`/auth/users/`, payload, {
 			withCredentials: true,
 		});
 	}

@@ -47,18 +47,18 @@ export class RegisterComponent {
 				validators: [Validators.required, Validators.email],
 				updateOn: 'blur',
 			}),
-			password1: new FormControl<string>('', {
+			password: new FormControl<string>('', {
 				validators: [Validators.required, Validators.minLength(8)],
-				updateOn: 'blur',
+				updateOn: 'change',
 			}),
-			password2: new FormControl<string>('', {
+			re_password: new FormControl<string>('', {
 				validators: [Validators.required, Validators.minLength(8)],
-				updateOn: 'blur',
+				updateOn: 'change',
 			}),
 		},
 		{
 			validators: passwordMatchValidator,
-			updateOn: 'blur',
+			updateOn: 'change',
 		}
 	);
 
@@ -71,7 +71,7 @@ export class RegisterComponent {
 	 * @returns True if password2 has been touched, has a value, and does not match password1.
 	 */
 	get showPasswordMismatch(): boolean {
-		const control = this.registerForm.get('password2');
+		const control = this.registerForm.get('re_password');
 		return !!(
 			control &&
 			control.value &&
