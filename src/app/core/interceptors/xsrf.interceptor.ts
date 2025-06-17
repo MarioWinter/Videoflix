@@ -1,3 +1,4 @@
+// core/interceptors/xsrf.interceptor.ts
 import { Injectable } from '@angular/core';
 import {
 	HttpEvent,
@@ -16,15 +17,6 @@ import { Observable } from 'rxjs';
 export class XsrfInterceptor implements HttpInterceptor {
 	constructor(private xsrfExtractor: HttpXsrfTokenExtractor) {}
 
-	/**
-	 * Intercepts outgoing HTTP requests. If a CSRF token
-	 * cookie is present and the request does not already
-	 * include `X-CSRFToken`, clones the request to add it.
-	 *
-	 * @param req The outgoing HTTP request.
-	 * @param next The next handler in the chain.
-	 * @returns An Observable of the HTTP event stream.
-	 */
 	intercept(
 		req: HttpRequest<any>,
 		next: HttpHandler
