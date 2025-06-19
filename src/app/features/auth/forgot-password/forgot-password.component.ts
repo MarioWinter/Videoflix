@@ -67,7 +67,8 @@ export class ForgotPasswordComponent {
 		if (this.forgotPasswordForm.valid) {
 			const payload = this.forgotPasswordForm.value as ResetPayload;
 			this.auth.forgotPassword(payload).subscribe({
-				next: () => this.router.navigate(['/reset-password']),
+				next: () =>
+					this.router.navigate(['/reset-password-email-sent']),
 				error: (err) => {
 					this.serverError = err.error?.detail || 'Reset failed';
 				},

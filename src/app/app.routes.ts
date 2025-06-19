@@ -11,19 +11,30 @@ import { VerifyEmailComponent } from './features/auth/verify-email/verify-email.
 import { LoginComponent } from './features/auth/login/login.component';
 import { ForgotPasswordComponent } from './features/auth/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './features/auth/reset-password/reset-password.component';
+import { ResetPasswordSentEmailComponent } from './features/auth/reset-password-sent-email/reset-password-sent-email.component';
 
 export const routes: Routes = [
-  
 	{ path: 'register', component: RegisterComponent },
 	{ path: 'login', component: LoginComponent },
 	{ path: 'verify-email', component: VerifyEmailComponent },
 	{ path: 'forgot-password', component: ForgotPasswordComponent },
+	{
+		path: 'reset-password-email-sent',
+		component: ResetPasswordSentEmailComponent,
+	},
 	{ path: 'reset-password', component: ResetPasswordComponent },
 	{ path: '', component: LandingpageComponent },
-	{ path: 'mainpage', component: MainpageComponent, canActivate: [AuthGuard] },
-  	{ path: 'preview', component: PreviewComponent },
-  	{ path: 'video-player', component: VideoPlayerComponent },
+	{
+		path: 'mainpage',
+		component: MainpageComponent,
+		canActivate: [AuthGuard],
+	},
+	{ path: 'preview', component: PreviewComponent, canActivate: [AuthGuard] },
+	{
+		path: 'video-player',
+		component: VideoPlayerComponent,
+		canActivate: [AuthGuard],
+	},
 	{ path: 'imprint', component: ImprintComponent },
 	{ path: 'privacy-policy', component: PrivacyPolicyComponent },
-
 ];

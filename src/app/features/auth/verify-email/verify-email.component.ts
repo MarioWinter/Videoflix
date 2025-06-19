@@ -3,8 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 /**
  * @remarks
- * Zeigt dem Nutzer nach der Registrierung eine Nachricht an,
- * dass er seine E-Mail verifizieren muss.
+ * Displays a message prompting the user to verify their email after registration.
  */
 
 @Component({
