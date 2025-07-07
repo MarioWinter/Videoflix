@@ -118,6 +118,10 @@ button {
 			margin-top: -0.5rem;
 			margin-bottom: 0.5rem;
 		}
+
+		@media (max-width: 480px) {
+			padding: 4.3rem 2.6rem;
+		}
 	}
 }
 /* Auth Responsive*/
