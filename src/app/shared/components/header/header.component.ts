@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { RouterLink } from '@angular/router';
+import { effect } from '@angular/core';
+import { VideoService } from '../../../services/video.service';
 
 @Component({
     selector: 'app-header',
@@ -11,17 +13,20 @@ import { RouterLink } from '@angular/router';
 })
 export class HeaderComponent {
     currentRoute = '';
-    videoTitle: string = '';
+    videoTitle = '';
 
-    constructor(private router: Router) {
+    constructor(private router: Router, private videoService: VideoService) {
         this.router.events.subscribe(() => {
             this.currentRoute = this.router.url.split('?')[0];
-
-            if (this.currentRoute === '/video-player') {
-                this.videoTitle = 'The Knastboy';
-            } else {
-                this.videoTitle = '';
+            if (this.currentRoute !== '/video-player') {
+                this.videoService.title.set('');
             }
+        });
+        effect(() => {
+            const title = this.videoService.title();
+            setTimeout(() => {
+                this.videoTitle = title;
+            });
         });
     }
 

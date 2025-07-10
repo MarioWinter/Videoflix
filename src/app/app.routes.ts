@@ -20,9 +20,11 @@ export const routes: Routes = [
 	{ path: 'forgot-password', component: ForgotPasswordComponent },
 	{ path: 'reset-password', component: ResetPasswordComponent },
 	{ path: '', component: LandingpageComponent },
-	{ path: 'mainpage', component: MainpageComponent, canActivate: [AuthGuard] },
+	// { path: 'mainpage', component: MainpageComponent, canActivate: [AuthGuard] },
+	{ path: 'mainpage', component: MainpageComponent },
   	{ path: 'preview', component: PreviewComponent },
   	{ path: 'video-player', component: VideoPlayerComponent },
+	{ path: 'video/:id', component: VideoPlayerComponent },
 	{ path: 'imprint', component: ImprintComponent },
 	{ path: 'privacy-policy', component: PrivacyPolicyComponent },
 

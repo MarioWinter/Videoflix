@@ -87,7 +87,8 @@
               "buildTarget": "VideoflixUI:build:production"
             },
             "development": {
-              "buildTarget": "VideoflixUI:build:development"
+              "buildTarget": "VideoflixUI:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

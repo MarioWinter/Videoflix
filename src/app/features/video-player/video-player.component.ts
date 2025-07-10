@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Location } from '@angular/common';
 import { Renderer2, ElementRef } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { VideoService } from '../../services/video.service';
 
 @Component({
     selector: 'app-video-player',
@@ -9,11 +11,26 @@ import { Renderer2, ElementRef } from '@angular/core';
     styleUrl: './video-player.component.scss',
 })
 export class VideoPlayerComponent {
+    videoUrl = '';
+
     constructor(
         private location: Location,
         private renderer: Renderer2,
-        private el: ElementRef
-    ) {}
+        private el: ElementRef,
+        private route: ActivatedRoute,
+        private videoService: VideoService
+    ) {
+        this.route.queryParams.subscribe((params) => {
+            this.videoUrl = params['url'] || '';
+
+            const videoId = params['id'];
+            if (videoId) {
+                this.videoService.getVideoById(+videoId).subscribe((video) => {
+                    this.videoService.title.set(video.title);
+                });
+            }
+        });
+    }
 
     goBack() {
         this.location.back();

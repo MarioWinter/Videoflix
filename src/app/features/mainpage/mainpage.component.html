@@ -3,24 +3,23 @@
         <div class="mainpage-top-content">
             <div class="video-info-container">
                 <div class="video-info">
-                    <h1>Breakout</h1>
-                    <p>
-                        In a high-security prison, a wrongly convicted man
-                        formulates a meticulous plan to break out and prove his
-                        innocence. He must navigate a web of alliances and
-                        betrayals to reclaim his freedom and expose the truth.
-                    </p>
-                    <button routerLink="/video-player">
+                    @let v = video(); @if(v) {
+                    <h1>{{ v.title }}</h1>
+                    <p>{{ v.description }}</p>
+                    }
+                    <button (click)="playVideo()">
                         <img src="/assets/icons/play_arrow.svg" />Play
                     </button>
                 </div>
             </div>
 
             <div class="video-wrapper">
+                @if (videoUrl) {
                 <video autoplay muted loop playsinline>
-                    <source src="assets/movies/movie-mainpage.mp4" type="video/mp4"/>
+                    <source [src]="videoUrl" type="video/mp4" />
                     Dein Browser unterstützt kein Video.
                 </video>
+                }
             </div>
         </div>
 
@@ -31,15 +30,15 @@
                 <div class="scroll-container">
                     <div class="frames">
                         @for (image of section.images; track image) {
-                          <a (click)="onImageClick(image)">
-                              <img [src]="image" />
-                          </a>
+                        <a (click)="onImageClick(image)">
+                            <img [src]="image" />
+                        </a>
                         }
                     </div>
                     <div class="fade-overlay-right"></div>
                 </div>
             </div>
             }
-        </div>  
+        </div>
     </div>
 </section>
