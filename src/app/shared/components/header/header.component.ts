@@ -4,10 +4,11 @@ import { Router } from '@angular/router';
 import { RouterLink } from '@angular/router';
 import { effect } from '@angular/core';
 import { VideoService } from '../../../services/video.service';
+import { ButtonComponent } from '../button/button.component';
 
 @Component({
     selector: 'app-header',
-    imports: [CommonModule, RouterLink],
+    imports: [CommonModule, RouterLink, ButtonComponent],
     templateUrl: './header.component.html',
     styleUrl: './header.component.scss',
 })
