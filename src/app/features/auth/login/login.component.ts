@@ -31,11 +31,11 @@ export class LoginComponent {
 	loginForm = new FormGroup({
 		email: new FormControl<string>('', {
 			validators: [Validators.required, Validators.email],
-			updateOn: 'blur',
+			updateOn: 'change',
 		}),
 		password: new FormControl<string>('', {
 			validators: [Validators.required, Validators.minLength(8)],
-			updateOn: 'blur',
+			updateOn: 'change',
 		}),
 	});
 

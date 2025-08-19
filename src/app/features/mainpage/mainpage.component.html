@@ -14,12 +14,7 @@
             </div>
 
             <div class="video-wrapper">
-                @if (videoUrl) {
-                <video autoplay muted loop playsinline>
-                    <source [src]="videoUrl" type="video/mp4" />
-                    Dein Browser unterstützt kein Video.
-                </video>
-                }
+                <video #previewVideo autoplay loop muted playsinline></video>
             </div>
         </div>
 
@@ -31,7 +26,7 @@
                     <div class="frames">
                         @for (image of section.images; track image) {
                         <a (click)="onImageClick(image)">
-                            <img [src]="image" />
+                            <img [src]="image" loading="eager"/>
                         </a>
                         }
                     </div>

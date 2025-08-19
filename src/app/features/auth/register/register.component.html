@@ -31,15 +31,15 @@
 
 			<app-input
 				class="form-input"
-				formControlName="re_password"
+				formControlName="confirmed_password"
 				type="password"
 				placeholder="Confirm Password"
 				[isVisible]="true"
 			>
 			</app-input>
 			<div class="error">
-				@if (showError('re_password')) {
-				{{ errorMessage("re_password") }}
+				@if (showError('confirmed_password')) {
+				{{ errorMessage("confirmed_password") }}
 				} @else if (showPasswordMismatch) { ⚠ Passwords must match }
 				@else { }
 			</div>

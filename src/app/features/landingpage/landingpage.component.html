@@ -10,8 +10,8 @@
         </div>
 
         <div class="signup-form">
-            <input id="signup_email" type="email" placeholder="Email Address" />
-            <app-button routerLink="/register">Sign Up<img src="/assets/icons/chevron_right.svg"/>
+            <input id="signup_email" type="email" [(ngModel)]="email" placeholder="Email Address" />
+            <app-button routerLink="/register" [queryParams]="{ email: email }">Sign Up<img src="/assets/icons/chevron_right.svg"/>
             </app-button>
         </div>
     </div>

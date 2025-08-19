@@ -1,9 +1,5 @@
 <section>
   <div class="video-overlay">
-    @if (videoUrl) {
-      <video #videoElement controls (play)="hideHeader()" (pause)="showHeader()">
-      <source [src]="videoUrl" type="video/mp4" />
-    </video>
-    }
+      <video #videoElement controls (play)="hideHeader()" (pause)="showHeader()"></video>
   </div>
 </section>

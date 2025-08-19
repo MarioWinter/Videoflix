@@ -15,11 +15,19 @@ export class PreviewComponent {
 
     constructor(private route: ActivatedRoute, private location: Location) {}
 
+
+    /**
+     * Initializes the component and sets the active image based on the query
+     * parameters in the route.
+     */
     ngOnInit() {
         this.route.queryParams.subscribe((params) => {
             this.activeImage = params['img'];
         });
     }
+    /**
+     * Navigates the user back to the previous page in the browser's history.
+     */
     goBack() {
         this.location.back();
     }

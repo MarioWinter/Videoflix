@@ -14,14 +14,13 @@ import { ResetPasswordComponent } from './features/auth/reset-password/reset-pas
 
 export const routes: Routes = [
   
+	{ path: '', component: LandingpageComponent },
 	{ path: 'register', component: RegisterComponent },
 	{ path: 'login', component: LoginComponent },
 	{ path: 'verify-email', component: VerifyEmailComponent },
 	{ path: 'forgot-password', component: ForgotPasswordComponent },
 	{ path: 'reset-password', component: ResetPasswordComponent },
-	{ path: '', component: LandingpageComponent },
-	// { path: 'mainpage', component: MainpageComponent, canActivate: [AuthGuard] },
-	{ path: 'mainpage', component: MainpageComponent },
+	{ path: 'mainpage', component: MainpageComponent, canActivate: [AuthGuard] },
   	{ path: 'preview', component: PreviewComponent },
   	{ path: 'video-player', component: VideoPlayerComponent },
 	{ path: 'video/:id', component: VideoPlayerComponent },

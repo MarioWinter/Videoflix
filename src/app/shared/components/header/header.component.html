@@ -8,7 +8,7 @@
         </div>
 
         @if (currentRoute === '/mainpage') {
-            <app-button routerLink="">
+            <app-button (click)="onLogout()">
                 <img src="/assets/icons/logout.svg" />Log out
             </app-button>
         } 
